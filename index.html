@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Devansh Sanghavi — Builder, Roboticist, Mathlete</title>
+<meta name="description" content="Devansh Sanghavi builds civic tech, leads robotics, and competes in math. Creator of CivicPulse." />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  :root {
+    --bg: #0A0E1A;
+    --surface: #131929;
+    --surface-2: #1A2236;
+    --indigo: #5B5FEF;
+    --indigo-soft: rgba(91, 95, 239, 0.14);
+    --cyan: #64D8F0;
+    --text: #F0EEF8;
+    --text-dim: #9AA0B8;
+    --text-faint: #5E6480;
+    --border: rgba(240, 238, 248, 0.08);
+    --border-strong: rgba(240, 238, 248, 0.14);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--indigo); color: #fff; }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    transition: background 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease;
+    border-bottom: 1px solid transparent;
+  }
+  nav.scrolled {
+    background: rgba(10, 14, 26, 0.72);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+  .brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+  }
+  .brand span { color: var(--indigo); }
+  .nav-links { display: flex; gap: 34px; align-items: center; }
+  .nav-links a {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    font-weight: 500;
+    transition: color 0.2s ease;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -6px;
+    width: 0; height: 1.5px;
+    background: var(--indigo);
+    transition: width 0.25s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--text);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    position: fixed;
+    top: 68px; left: 0; right: 0;
+    background: rgba(10, 14, 26, 0.96);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    transform: translateY(-120%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 99;
+  }
+  .mobile-menu.open { transform: translateY(0); }
+  .mobile-menu a {
+    display: block;
+    padding: 16px 28px;
+    color: var(--text-dim);
+    font-size: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .mobile-menu a:first-child { border-top: none; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  #particles {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    opacity: 0.15;
+    z-index: 0;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(91,95,239,0.10), transparent 70%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 2; width: 100%; }
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--cyan);
+    letter-spacing: 0.06em;
+    margin-bottom: 22px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.1s;
+  }
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(64px, 12vw, 120px);
+    line-height: 0.94;
+    letter-spacing: -0.035em;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+  .hero h1 .l2 { color: var(--text); display: block; }
+  .hero-sub {
+    font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+    color: var(--text-dim);
+    max-width: 620px;
+    font-weight: 400;
+    margin-bottom: 44px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.35s;
+  }
+  .hero-sub b { color: var(--text); font-weight: 600; }
+  .cta-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.5s;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 14px 26px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.2s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    border: 1px solid transparent;
+  }
+  .btn-primary {
+    background: var(--indigo);
+    color: #fff;
+    box-shadow: 0 8px 30px rgba(91,95,239,0.35);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(91,95,239,0.5);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--border-strong);
+  }
+  .btn-ghost:hover {
+    transform: translateY(-2px);
+    border-color: var(--cyan);
+    background: rgba(100,216,240,0.06);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 34px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s, floatY 2.4s ease-in-out infinite 1.6s;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section { padding: 110px 0; position: relative; }
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--indigo);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: '';
+    width: 26px; height: 1px;
+    background: var(--indigo);
+  }
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 48px;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    margin-bottom: 22px;
+  }
+  .about-text p b { color: var(--text); font-weight: 600; }
+  .about-text .lead {
+    color: var(--text);
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+  .photo-block {
+    aspect-ratio: 4 / 5;
+    border: 1.5px dashed var(--border-strong);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background:
+      linear-gradient(135deg, rgba(91,95,239,0.05), rgba(100,216,240,0.04)),
+      var(--surface);
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    position: sticky;
+    top: 100px;
+  }
+  .photo-block .ph-icon {
+    font-size: 1.6rem;
+    color: var(--text-faint);
+    opacity: 0.6;
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .proj-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(91,95,239,0.12), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-strong);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(91,95,239,0.25);
+  }
+  .card:hover::before { opacity: 1; }
+
+  .card.featured {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, var(--surface-2), var(--surface));
+    border-color: rgba(91,95,239,0.25);
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 36px;
+    align-items: center;
+  }
+  .card.featured:hover {
+    box-shadow: 0 22px 60px rgba(91,95,239,0.18), 0 0 0 1px rgba(91,95,239,0.4);
+  }
+  .featured-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--cyan);
+    background: rgba(100,216,240,0.1);
+    border: 1px solid rgba(100,216,240,0.2);
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+  }
+  .card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .card.featured h3 { font-size: 1.9rem; }
+  .card p.desc {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+  .card .status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--cyan);
+    margin-bottom: 14px;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: rgba(240,238,248,0.04);
+    border: 1px solid var(--border);
+    padding: 5px 10px;
+    border-radius: 6px;
+  }
+  .card-link {
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--indigo);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s ease, color 0.2s ease;
+    align-self: flex-start;
+  }
+  .card-link:hover { gap: 12px; color: var(--cyan); }
+
+  .featured-visual {
+    aspect-ratio: 1 / 1;
+    border-radius: 14px;
+    border: 1.5px dashed var(--border-strong);
+    background:
+      linear-gradient(135deg, rgba(91,95,239,0.08), rgba(100,216,240,0.05)),
+      var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 20px;
+  }
+
+  /* ---------- ACHIEVEMENTS ---------- */
+  .ach-columns {
+    column-count: 2;
+    column-gap: 22px;
+  }
+  .ach-group {
+    break-inside: avoid;
+    margin-bottom: 22px;
+  }
+  .ach-group-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 14px;
+    padding-left: 4px;
+  }
+  .ach-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-bottom: 12px;
+    transition: border-color 0.25s ease, background 0.25s ease;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .ach-card:hover {
+    border-color: var(--border-strong);
+    background: var(--surface-2);
+  }
+  .ach-stat {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--indigo);
+    letter-spacing: -0.03em;
+    flex-shrink: 0;
+    min-width: 60px;
+  }
+  .ach-stat.cyan { color: var(--cyan); }
+  .ach-body h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 3px;
+  }
+  .ach-body p {
+    color: var(--text-dim);
+    font-size: 0.86rem;
+    line-height: 1.45;
+  }
+  .ach-card.nostat { flex-direction: column; gap: 4px; }
+
+  /* ---------- STATS STRIP ---------- */
+  .stats-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-top: 40px;
+  }
+  .stat-item {
+    text-align: center;
+    padding: 26px 16px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+  }
+  .stat-item .num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    color: var(--indigo);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .stat-item .num.cyan { color: var(--cyan); }
+  .stat-item .lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    color: var(--text-dim);
+    margin-top: 10px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- ACTIVITIES ---------- */
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 12px 22px;
+    font-size: 0.92rem;
+    color: var(--text);
+    font-weight: 500;
+    transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pill:hover {
+    transform: translateY(-3px);
+    border-color: var(--cyan);
+    color: var(--cyan);
+  }
+  .pill .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--indigo);
+    flex-shrink: 0;
+  }
+  .pill:hover .dot { background: var(--cyan); }
+
+  /* ---------- CONTACT ---------- */
+  .contact {
+    text-align: center;
+    padding-bottom: 90px;
+  }
+  .contact .section-label { justify-content: center; }
+  .contact .section-label::before { display: none; }
+  .contact h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+    margin-bottom: 22px;
+  }
+  .contact h2 a {
+    color: var(--indigo);
+    transition: color 0.2s ease;
+    text-decoration: underline;
+    text-decoration-color: rgba(91,95,239,0.3);
+    text-underline-offset: 6px;
+  }
+  .contact h2 a:hover { color: var(--cyan); text-decoration-color: var(--cyan); }
+  .contact p {
+    color: var(--text-dim);
+    font-size: 1.15rem;
+    margin-bottom: 38px;
+  }
+  .social-row {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .social-link {
+    padding: 12px 24px;
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--text);
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .social-link:hover {
+    transform: translateY(-2px);
+    border-color: var(--indigo);
+    background: var(--indigo-soft);
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 30px 0;
+    text-align: center;
+  }
+  footer p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.76rem;
+    color: var(--text-faint);
+  }
+
+  /* ---------- SCROLL ANIMATIONS ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes floatY {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(7px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .about-grid { grid-template-columns: 1fr; gap: 36px; }
+    .photo-block { position: relative; top: 0; max-width: 340px; }
+    .proj-grid { grid-template-columns: 1fr; }
+    .card.featured { grid-template-columns: 1fr; gap: 26px; }
+    .card.featured h3 { font-size: 1.6rem; }
+    .ach-columns { column-count: 1; }
+    .stats-strip { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 80px 0; }
+  }
+  @media (max-width: 480px) {
+    .wrap { padding: 0 20px; }
+    .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .cta-row { width: 100%; }
+    .btn { flex: 1; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">Devansh<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#activities">Activities</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#achievements">Achievements</a>
+  <a href="#activities">Activities</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero" id="top">
+  <canvas id="particles"></canvas>
+  <div class="wrap hero-content">
+    <div class="hero-tag mono">// Los Altos, CA · Class of 2028</div>
+    <h1>Devansh<span class="l2">Sanghavi</span></h1>
+    <p class="hero-sub">I build things that matter — <b>civic tech</b>, <b>robotics</b>, and <b>math</b>.</p>
+    <div class="cta-row">
+      <a href="#projects" class="btn btn-primary">See my work ↓</a>
+      <a href="#" class="btn btn-ghost">CivicPulse ↗</a>
+    </div>
+  </div>
+  <div class="scroll-hint mono">SCROLL</div>
+</header>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-label">About</div>
+        <h2 class="section-title">Systems thinking,<br />shipped as software.</h2>
+        <p class="lead">I'm a sophomore at Los Altos High School, but I don't build school projects — I build real software that real people use.</p>
+        <p>Most of what I make starts the same way: I notice a system failing — a city that can't track its own potholes, a robot that can't navigate on its own — and I work backwards from the failure mode until I've fixed it. That instinct runs through everything, from <b>diagnosing autonomous navigation drift on our VEX robot</b> to <b>designing a civic reporting app the city actually adopted</b>.</p>
+        <p>When I'm not shipping, I'm competing in math, mentoring students through it, and machining parts for our FRC team. I care about the work being good, not about how it looks on a transcript.</p>
+      </div>
+      <div class="photo-block reveal">
+        <div class="ph-icon">▢</div>
+        [ Photo ]
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROJECTS ===================== -->
+<section id="projects">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-label">Projects</div>
+      <h2 class="section-title">Things I've built.</h2>
+    </div>
+    <div class="proj-grid">
+
+      <!-- Featured: CivicPulse -->
+      <article class="card featured reveal">
+        <div>
+          <span class="featured-badge mono">FEATURED · LIVE</span>
+          <h3>CivicPulse</h3>
+          <p class="desc">A civic engagement platform that lets Los Altos residents report local infrastructure issues — potholes, broken streetlights, graffiti — upvote community priorities, and track resolution end-to-end. Real-time clustered maps, GPS-tagged photo uploads, push notifications, and an admin dashboard for city officials. Published in the Town Crier; in active use with LAMVCF and the Rotary Club. iOS and Android apps submitted to the app stores.</p>
+          <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">Leaflet.js</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">iOS + Android</span>
+          </div>
+          <a href="#" class="card-link">View project →</a>
+        </div>
+        <div class="featured-visual">
+          <div class="ph-icon" style="font-size:1.6rem;">▢</div>
+          [ App screenshot ]
+        </div>
+      </article>
+
+      <!-- Escher Art Generator -->
+      <article class="card reveal">
+        <div class="status mono">● IN PROGRESS</div>
+        <h3>Escher Art Generator</h3>
+        <p class="desc">Applies logarithmic image transformations to generate recursive, Escher-style art from ordinary photographs — mapping the math of conformal mappings onto pixels.</p>
+        <div class="tags">
+          <span class="tag">Image Processing</span>
+          <span class="tag">Conformal Maps</span>
+          <span class="tag">Python</span>
+        </div>
+        <a href="#" class="card-link">View project →</a>
+      </article>
+
+      <!-- Placeholder / More -->
+      <article class="card reveal">
+        <div class="status mono">○ MORE SOON</div>
+        <h3>What's next</h3>
+        <p class="desc">I'm always building. New robotics tooling, civic experiments, and math-driven side projects land here as they ship.</p>
+        <div class="tags">
+          <span class="tag">Robotics</span>
+          <span class="tag">Civic Tech</span>
+          <span class="tag">Math</span>
+        </div>
+        <a href="#contact" class="card-link">Get in touch →</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ACHIEVEMENTS ===================== -->
+<section id="achievements">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-label">Achievements</div>
+      <h2 class="section-title">Selected highlights.</h2>
+    </div>
+
+    <div class="ach-columns reveal">
+
+      <div class="ach-group">
+        <div class="ach-group-title">Math</div>
+        <div class="ach-card">
+          <div class="ach-stat">7th</div>
+          <div class="ach-body">
+            <h4>Math Kangaroo — National</h4>
+            <p>Placed 7th nationally in 9th grade; multi-time national award winner.</p>
+          </div>
+        </div>
+        <div class="ach-card">
+          <div class="ach-stat cyan">60+</div>
+          <div class="ach-body">
+            <h4>Students Mentored</h4>
+            <p>Coached 60+ students in Math Kangaroo prep since 8th grade — several reached national recognition.</p>
+          </div>
+        </div>
+        <div class="ach-card nostat">
+          <h4>AMC 10 Competitor</h4>
+          <p>Competing in the AMC 10 olympiad track.</p>
+        </div>
+      </div>
+
+      <div class="ach-group">
+        <div class="ach-group-title">Robotics</div>
+        <div class="ach-card nostat">
+          <h4>VEX Robotics — Co-Captain</h4>
+          <p>Implemented inertial sensor integration for reliable autonomous navigation.</p>
+        </div>
+        <div class="ach-card nostat">
+          <h4>FRC Team Member</h4>
+          <p>Assembly, machining, and electrical work; designed a spindexer mechanism.</p>
+        </div>
+        <div class="ach-card nostat">
+          <h4>MIT Beaver Works — Basics of ASICs</h4>
+          <p>Completed coursework in digital logic, HDL, and chip design.</p>
+        </div>
+      </div>
+
+      <div class="ach-group">
+        <div class="ach-group-title">Civic Tech</div>
+        <div class="ach-card nostat">
+          <h4>Published in the Town Crier</h4>
+          <p>CivicPulse featured in the local newspaper for its community impact.</p>
+        </div>
+        <div class="ach-card">
+          <div class="ach-stat cyan">2</div>
+          <div class="ach-body">
+            <h4>Apps Published</h4>
+            <p>CivicPulse submitted to both the iOS App Store and Google Play.</p>
+          </div>
+        </div>
+        <div class="ach-card nostat">
+          <h4>City Partnerships</h4>
+          <p>Working directly with LAMVCF and the Rotary Club on rollout.</p>
+        </div>
+      </div>
+
+      <div class="ach-group">
+        <div class="ach-group-title">Community</div>
+        <div class="ach-card">
+          <div class="ach-stat">100+</div>
+          <div class="ach-body">
+            <h4>Volunteer Hours</h4>
+            <p>Logged across mentorship, STEM outreach, and FCSN volunteering.</p>
+          </div>
+        </div>
+        <div class="ach-card nostat">
+          <h4>Founded STEM Research Club</h4>
+          <p>Started a club at LAHS connecting students with college research opportunities.</p>
+        </div>
+        <div class="ach-card nostat">
+          <h4>JV Tennis — League Champions</h4>
+          <p>Won the JV league as team captain.</p>
+        </div>
+        <div class="ach-card nostat">
+          <h4>FCSN Volunteer</h4>
+          <p>Friends of Children with Special Needs.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="stats-strip reveal">
+      <div class="stat-item">
+        <div class="num">7th</div>
+        <div class="lbl mono">NATIONALLY · MATH KANGAROO</div>
+      </div>
+      <div class="stat-item">
+        <div class="num cyan">60+</div>
+        <div class="lbl mono">STUDENTS MENTORED</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">100+</div>
+        <div class="lbl mono">VOLUNTEER HOURS</div>
+      </div>
+      <div class="stat-item">
+        <div class="num cyan">2</div>
+        <div class="lbl mono">APPS PUBLISHED</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ACTIVITIES ===================== -->
+<section id="activities">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-label">Activities</div>
+      <h2 class="section-title">Currently.</h2>
+    </div>
+    <div class="pills reveal">
+      <div class="pill"><span class="dot"></span>VEX Robotics · Co-Captain</div>
+      <div class="pill"><span class="dot"></span>FRC Robotics</div>
+      <div class="pill"><span class="dot"></span>Math Kangaroo · Competitor &amp; Mentor</div>
+      <div class="pill"><span class="dot"></span>STEM Research Club · Founder</div>
+      <div class="pill"><span class="dot"></span>Tennis</div>
+      <div class="pill"><span class="dot"></span>Speech &amp; Debate</div>
+      <div class="pill"><span class="dot"></span>FCSN Volunteering</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-label">Contact</div>
+      <h2>Let's <a href="mailto:hello@example.com">talk</a>.</h2>
+      <p>I'm always open to interesting conversations.</p>
+      <div class="social-row">
+        <a href="mailto:hello@example.com" class="social-link">Email</a>
+        <a href="#" class="social-link">GitHub ↗</a>
+        <a href="#" class="social-link">LinkedIn ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Devansh Sanghavi · Built from scratch, no templates.</p>
+  </div>
+</footer>
+
+<script>
+/* ---------- NAV: solid on scroll ---------- */
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 30);
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ---------- MOBILE MENU ---------- */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const toggleMenu = (force) => {
+  const open = force !== undefined ? force : !mobileMenu.classList.contains('open');
+  mobileMenu.classList.toggle('open', open);
+  hamburger.classList.toggle('open', open);
+};
+hamburger.addEventListener('click', () => toggleMenu());
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+
+/* ---------- SCROLL REVEAL ---------- */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ---------- PARTICLE / NODE GRAPH ---------- */
+(function () {
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let w, h, dpr, nodes = [], raf = null, running = true;
+
+  const NODE_COLOR = '240, 238, 248';
+  const LINK_COLOR = '91, 95, 239';
+  const LINK_DIST = 130;
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = canvas.clientWidth; h = canvas.clientHeight;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    initNodes();
+  }
+
+  function initNodes() {
+    const count = Math.min(90, Math.floor((w * h) / 14000));
+    nodes = [];
+    for (let i = 0; i < count; i++) {
+      nodes.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.32,
+        vy: (Math.random() - 0.5) * 0.32,
+        r: Math.random() * 1.6 + 0.8
+      });
+    }
+  }
+
+  function step() {
+    if (!running) return;
+    ctx.clearRect(0, 0, w, h);
+
+    for (let i = 0; i < nodes.length; i++) {
+      const n = nodes[i];
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0 || n.x > w) n.vx *= -1;
+      if (n.y < 0 || n.y > h) n.vy *= -1;
+
+      for (let j = i + 1; j < nodes.length; j++) {
+        const m = nodes[j];
+        const dx = n.x - m.x, dy = n.y - m.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < LINK_DIST) {
+          const alpha = (1 - dist / LINK_DIST) * 0.9;
+          ctx.strokeStyle = `rgba(${LINK_COLOR}, ${alpha})`;
+          ctx.lineWidth = 0.6;
+          ctx.beginPath();
+          ctx.moveTo(n.x, n.y);
+          ctx.lineTo(m.x, m.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    for (const n of nodes) {
+      ctx.fillStyle = `rgba(${NODE_COLOR}, 0.9)`;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    raf = requestAnimationFrame(step);
+  }
+
+  function start() { if (!raf) { running = true; raf = requestAnimationFrame(step); } }
+  function stop() { running = false; if (raf) { cancelAnimationFrame(raf); raf = null; } }
+
+  /* Pause when tab hidden (Page Visibility API) */
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop(); else start();
+  });
+
+  window.addEventListener('resize', resize, { passive: true });
+  resize();
+  start();
+})();
+</script>
+
+</body>
+</html>
