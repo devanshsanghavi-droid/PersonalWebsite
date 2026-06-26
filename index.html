@@ -1,788 +1,646 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Devansh Sanghavi</title>
-  <meta name="description" content="Sophomore at Los Altos High School. Builds civic tech, competes in math, does robotics." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Devansh Sanghavi</title>
+<meta name="description" content="Devansh Sanghavi, a sophomore at Los Altos High School. Civic tech, math, and robotics." />
 
-  <style>
+<!-- Inter from Google Fonts, weights 400 / 500 / 600 only -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-    /* ============================================================
-       RESET & BASE
-    ============================================================ */
+<style>
+  /* ============================================================
+     RESET / BASE
+     ============================================================ */
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+  :root {
+    --bg: #FAFAF8;
+    --text: #111111;
+    --muted: #6B7280;
+    --accent: #2563EB;
+    --rule: #E5E5E5;
+    --maxw: 720px;
+  }
+
+  html {
+    /* No smooth scroll, no animations anywhere. */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* ============================================================
+     NAV
+     ============================================================ */
+  nav {
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .nav-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  /* Brand on the left. Clicking it returns to the home page. */
+  .brand {
+    color: var(--text);
+    font-weight: 600;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .brand:hover {
+    text-decoration: none;
+  }
+
+  /* Right side navigation links. */
+  .nav-links {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .nav-links a:hover {
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  /* The currently active page link is darkened. */
+  .nav-links a.active {
+    color: var(--text);
+  }
+
+  /* Mobile menu toggle, hidden on desktop. */
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    padding: 4px 6px;
+  }
+
+  /* ============================================================
+     LAYOUT / PAGES
+     ============================================================ */
+  main {
+    flex: 1 0 auto;
+    width: 100%;
+  }
+
+  .container {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Each "page" is a section toggled by JS. Hidden by default. */
+  .page {
+    display: none;
+  }
+
+  .page.active {
+    display: block;
+  }
+
+  /* Standard interior pages get generous top and bottom spacing. */
+  .page-inner {
+    padding: 72px 0 96px;
+  }
+
+  .page-inner h1 {
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 36px;
+  }
+
+  /* ============================================================
+     HOME PAGE
+     ============================================================ */
+  /* Full viewport height, vertically centered content. */
+  #page-home.active {
+    display: flex;
+  }
+
+  #page-home {
+    /* Subtract the nav height so it fills exactly the rest. */
+    min-height: calc(100vh - 61px);
+    align-items: center;
+  }
+
+  .home-inner {
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  .home-name {
+    font-size: 52px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .home-tagline {
+    color: var(--muted);
+    font-size: 18px;
+    margin-top: 18px;
+    max-width: 600px;
+  }
+
+  .home-links {
+    margin-top: 28px;
+    font-size: 15px;
+    color: var(--muted);
+  }
+
+  /* The dot separators between the inline links. */
+  .home-links .sep {
+    color: var(--muted);
+    margin: 0 10px;
+  }
+
+  /* ============================================================
+     ABOUT PAGE
+     ============================================================ */
+  .prose p {
+    margin-bottom: 22px;
+    font-size: 17px;
+  }
+
+  .prose p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ============================================================
+     PROJECTS PAGE
+     ============================================================ */
+  .project {
+    padding: 36px 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* First project sits right under the page heading, no double rule. */
+  .project:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .project h2 {
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+
+  .project h2 a {
+    color: var(--text);
+  }
+
+  .project h2 a:hover {
+    color: var(--accent);
+  }
+
+  /* The small secondary link under a project title (e.g. article link). */
+  .project-meta {
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+
+  .project-byline {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .project p.desc {
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+
+  /* Project image, plain with a thin border, no shadow. */
+  .project-image {
+    margin-bottom: 16px;
+  }
+
+  .project-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--rule);
+  }
+
+  .project-image figcaption {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+
+  /* Tech stack line under each project. */
+  .stack {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ============================================================
+     ACHIEVEMENTS / HIGHLIGHTS PAGE
+     ============================================================ */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px 40px;
+  }
+
+  .hl-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .hl-group p {
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+
+  .hl-group p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ============================================================
+     CONTACT PAGE
+     ============================================================ */
+  .contact-text {
+    font-size: 17px;
+    margin-bottom: 24px;
+    max-width: 560px;
+  }
+
+  .contact-links {
+    font-size: 16px;
+  }
+
+  .contact-links .sep {
+    color: var(--muted);
+    margin: 0 10px;
+  }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  footer {
+    flex-shrink: 0;
+    border-top: 1px solid var(--rule);
+    padding: 22px 24px;
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width: 640px) {
+    .home-name {
+      font-size: 40px;
     }
 
-    html {
-      scroll-behavior: smooth;
-      font-size: 17px;
-    }
-
-    body {
-      background-color: #FAFAF8;
-      color: #111111;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      font-weight: 400;
-      font-size: 1rem;
-      line-height: 1.75;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
-    }
-
-    ::selection {
-      background: #BFDBFE;
-      color: #111111;
-    }
-
-    a {
-      color: #2563EB;
-      text-decoration: none;
-      transition: color 0.15s ease;
-    }
-
-    a:hover {
-      color: #1D4ED8;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    /* ============================================================
-       LAYOUT UTILITIES
-    ============================================================ */
-
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 28px;
-    }
-
-    /* ============================================================
-       TYPOGRAPHY SCALE
-    ============================================================ */
-
-    .hero-name {
-      font-size: 52px;
-      font-weight: 600;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      color: #111111;
-    }
-
-    .section-heading {
-      font-size: 28px;
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.015em;
-      color: #111111;
-      margin-bottom: 36px;
-    }
-
-    .project-name {
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 1.3;
-      color: #111111;
-    }
-
-    .meta-text {
-      font-size: 13px;
-      color: #6B7280;
-      line-height: 1.5;
-    }
-
-    .secondary-text {
-      color: #6B7280;
-    }
-
-    /* ============================================================
-       NAVIGATION
-    ============================================================ */
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: transparent;
-      border-bottom: 1px solid transparent;
-      transition: background 0.2s ease, border-color 0.2s ease;
-    }
-
-    nav.scrolled {
-      background: #ffffff;
-      border-bottom-color: #E5E5E5;
-    }
-
-    .nav-inner {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
-    }
-
-    .nav-brand {
-      font-size: 14px;
-      font-weight: 600;
-      color: #111111;
-      text-decoration: none;
-      letter-spacing: -0.01em;
-    }
-
-    .nav-brand:hover {
-      color: #111111;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 14px;
-      font-weight: 500;
-      color: #6B7280;
-      text-decoration: none;
-      transition: color 0.15s ease;
-    }
-
-    .nav-links a:hover {
-      color: #111111;
-    }
-
-    /* Mobile nav: stacked links beneath the bar */
-    .nav-mobile {
-      display: none;
-      flex-direction: column;
-      gap: 0;
-      background: #ffffff;
-      border-bottom: 1px solid #E5E5E5;
-      position: fixed;
-      top: 60px;
-      left: 0;
-      right: 0;
-      z-index: 99;
-    }
-
-    .nav-mobile.open {
-      display: flex;
-    }
-
-    .nav-mobile a {
-      display: block;
-      padding: 14px 28px;
-      font-size: 15px;
-      font-weight: 500;
-      color: #6B7280;
-      text-decoration: none;
-      border-top: 1px solid #E5E5E5;
-      transition: color 0.15s ease;
-    }
-
-    .nav-mobile a:first-child {
-      border-top: none;
-    }
-
-    .nav-mobile a:hover {
-      color: #111111;
-    }
-
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px 6px;
-      color: #6B7280;
-      font-size: 20px;
-      line-height: 1;
-    }
-
-    /* ============================================================
-       HERO
-    ============================================================ */
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      background-color: #FAFAF8;
-      padding-top: 60px; /* offset for fixed nav height */
-    }
-
-    .hero-content {
-      padding: 0 28px;
-      max-width: 720px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .hero-tagline {
-      font-size: 17px;
-      color: #6B7280;
-      font-weight: 400;
-      margin-top: 16px;
-      margin-bottom: 26px;
-      line-height: 1.6;
-    }
-
-    .hero-links {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      font-size: 15px;
-    }
-
-    .hero-links a {
-      color: #2563EB;
-      font-weight: 500;
-      text-decoration: none;
-    }
-
-    .hero-links a:hover {
-      color: #1D4ED8;
-      text-decoration: underline;
-    }
-
-    .hero-links .sep {
-      color: #D1D5DB;
-      margin: 0 12px;
-      font-weight: 400;
-      user-select: none;
-    }
-
-    /* ============================================================
-       SECTION ALTERNATION
-       odd sections: #FAFAF8
-       even sections: #F4F4F2
-    ============================================================ */
-
-    section {
-      padding: 90px 0;
-    }
-
-    /* about = 1st section, odd */
-    #about {
-      background-color: #FAFAF8;
-    }
-
-    /* projects = 2nd section, even */
-    #projects {
-      background-color: #F4F4F2;
-    }
-
-    /* highlights = 3rd section, odd */
-    #highlights {
-      background-color: #FAFAF8;
-    }
-
-    /* contact = 4th section, even */
-    #contact {
-      background-color: #F4F4F2;
-    }
-
-    /* ============================================================
-       ABOUT
-    ============================================================ */
-
-    .about-body p {
-      color: #111111;
-      margin-bottom: 20px;
-    }
-
-    .about-body p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* ============================================================
-       PROJECTS
-    ============================================================ */
-
-    .project-list {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-entry {
-      padding: 32px 0;
-      border-bottom: 1px solid #E5E5E5;
-    }
-
-    .project-entry:first-child {
-      border-top: 1px solid #E5E5E5;
-    }
-
-    .project-header {
-      display: flex;
-      align-items: baseline;
-      gap: 14px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-
-    .project-ext-link {
-      font-size: 13px;
-      font-weight: 500;
-      color: #2563EB;
-      white-space: nowrap;
-      text-decoration: none;
-    }
-
-    .project-ext-link:hover {
-      color: #1D4ED8;
-      text-decoration: underline;
-    }
-
-    .project-desc {
-      color: #111111;
-      font-size: 17px;
-      line-height: 1.75;
-      margin-bottom: 12px;
-    }
-
-    .project-stack {
-      font-size: 13px;
-      color: #6B7280;
-      line-height: 1.5;
-    }
-
-    /* ============================================================
-       HIGHLIGHTS
-    ============================================================ */
-
-    .highlights-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 44px 60px;
-    }
-
-    .highlight-group {
-      /* each category */
-    }
-
-    .highlight-category {
-      font-size: 11px;
-      font-weight: 600;
-      color: #6B7280;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-
-    .highlight-items {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .highlight-items li {
-      font-size: 15px;
-      color: #111111;
-      line-height: 1.55;
-      padding-left: 14px;
-      position: relative;
-    }
-
-    .highlight-items li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 9px;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: #D1D5DB;
-    }
-
-    .highlight-items a {
-      color: #2563EB;
-      text-decoration: none;
-    }
-
-    .highlight-items a:hover {
-      color: #1D4ED8;
-      text-decoration: underline;
-    }
-
-    /* ============================================================
-       CONTACT
-    ============================================================ */
-
-    .contact-intro {
-      color: #111111;
-      font-size: 17px;
-      line-height: 1.75;
-      margin-bottom: 22px;
-    }
-
-    .contact-links {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
+    .home-tagline {
       font-size: 16px;
     }
 
-    .contact-links a {
-      font-weight: 500;
-      color: #2563EB;
-      text-decoration: none;
+    /* Collapse the highlights grid to a single column. */
+    .highlights-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
     }
 
-    .contact-links a:hover {
-      color: #1D4ED8;
-      text-decoration: underline;
+    /* Nav switches to a toggle button that reveals stacked links. */
+    .nav-toggle {
+      display: block;
     }
 
-    .contact-links .sep {
-      color: #D1D5DB;
-      margin: 0 12px;
-      user-select: none;
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      padding: 8px 24px 16px;
     }
 
-    /* ============================================================
-       FOOTER
-    ============================================================ */
-
-    footer {
-      border-top: 1px solid #E5E5E5;
-      background-color: #FAFAF8;
-      padding: 28px 0;
-      text-align: center;
+    /* When toggled open, show the stacked links. */
+    .nav-links.open {
+      display: flex;
     }
 
-    footer p {
-      font-size: 13px;
-      color: #6B7280;
+    .nav-links a {
+      padding: 10px 0;
+      font-size: 16px;
+      width: 100%;
     }
 
-    /* ============================================================
-       RESPONSIVE: TABLET (max 768px)
-    ============================================================ */
-
-    @media (max-width: 768px) {
-      html {
-        font-size: 16px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .nav-toggle {
-        display: block;
-      }
-
-      .hero-name {
-        font-size: 40px;
-      }
-
-      .section-heading {
-        font-size: 24px;
-        margin-bottom: 28px;
-      }
-
-      section {
-        padding: 70px 0;
-      }
-
-      .highlights-grid {
-        grid-template-columns: 1fr;
-        gap: 36px;
-      }
+    nav {
+      position: relative;
     }
 
-    /* ============================================================
-       RESPONSIVE: MOBILE (max 480px)
-    ============================================================ */
-
-    @media (max-width: 480px) {
-      .container,
-      .hero-content,
-      .nav-inner {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-
-      .hero-name {
-        font-size: 36px;
-      }
-
-      .hero-tagline {
-        font-size: 16px;
-      }
-
-      .section-heading {
-        font-size: 22px;
-        margin-bottom: 22px;
-      }
-
-      section {
-        padding: 56px 0;
-      }
-
-      .project-entry {
-        padding: 26px 0;
-      }
-
-      .project-header {
-        flex-direction: column;
-        gap: 4px;
-        align-items: flex-start;
-      }
-
-      .hero-links {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-      }
-
-      .hero-links .sep {
-        display: none;
-      }
-
-      .contact-links {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-      }
-
-      .contact-links .sep {
-        display: none;
-      }
-
-      .highlights-grid {
-        gap: 30px;
-      }
+    .page-inner h1 {
+      font-size: 26px;
     }
-
-    /* ============================================================
-       REDUCED MOTION
-    ============================================================ */
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      * { transition-duration: 0.01ms !important; }
-    }
-
-    /* ============================================================
-       PRINT
-    ============================================================ */
-
-    @media print {
-      nav, .nav-mobile, footer { display: none; }
-      section { padding: 20px 0; background: none !important; }
-      .hero { min-height: auto; padding-top: 0; background: none; }
-      .hero-name { font-size: 32px; }
-    }
-
-  </style>
+  }
+</style>
 </head>
+
 <body>
 
 <!-- ============================================================
      NAVIGATION
-============================================================ -->
-<nav id="site-nav" role="navigation" aria-label="Main navigation">
+     ============================================================ -->
+<nav>
   <div class="nav-inner">
-    <a href="#top" class="nav-brand">Devansh Sanghavi</a>
-    <ul class="nav-links" role="list">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#highlights">Achievements</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    <!-- Brand returns to the home page. -->
+    <a href="#home" class="brand" data-page="home">Devansh Sanghavi</a>
+
+    <!-- Mobile toggle button. -->
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">Menu</button>
+
+    <!-- Right hand navigation links. Each swaps the visible page. -->
+    <div class="nav-links" id="navLinks">
+      <a href="#about" data-page="about">About</a>
+      <a href="#projects" data-page="projects">Projects</a>
+      <a href="#achievements" data-page="achievements">Achievements</a>
+      <a href="#contact" data-page="contact">Contact</a>
+    </div>
   </div>
 </nav>
 
-<div class="nav-mobile" id="nav-mobile" aria-label="Mobile navigation">
-  <a href="#about">About</a>
-  <a href="#projects">Projects</a>
-  <a href="#highlights">Achievements</a>
-  <a href="#contact">Contact</a>
-</div>
-
-
 <!-- ============================================================
-     HERO
-============================================================ -->
-<header class="hero" id="top">
-  <div class="hero-content">
-    <h1 class="hero-name">Devansh Sanghavi</h1>
-    <p class="hero-tagline">Sophomore at Los Altos High School. I build civic tech, compete in math, and do robotics.</p>
-    <div class="hero-links">
-      <a href="https://www.losaltosonline.com/beyond_the_classroom/los-altos-high-school-student-builds-civic-reporting-app/article_11694c94-65eb-401e-987d-403e02550b8c.html" target="_blank" rel="noopener noreferrer">CivicPulse &#8599;</a>
-      <span class="sep" aria-hidden="true">&middot;</span>
-      <a href="#" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a>
-      <span class="sep" aria-hidden="true">&middot;</span>
-      <a href="#contact">Email</a>
+     MAIN CONTENT, ONE DIV PER PAGE
+     ============================================================ -->
+<main>
+
+  <!-- ---------------- HOME ---------------- -->
+  <section class="page" id="page-home" data-page="home">
+    <div class="home-inner">
+      <h1 class="home-name">Devansh Sanghavi</h1>
+      <p class="home-tagline">Sophomore at Los Altos High School. I build civic tech, compete in math, and do robotics.</p>
+      <p class="home-links">
+        <a href="#">CivicPulse &#8599;</a>
+        <span class="sep">&middot;</span>
+        <a href="#">GitHub &#8599;</a>
+        <span class="sep">&middot;</span>
+        <a href="mailto:#">Email</a>
+      </p>
     </div>
-  </div>
-</header>
+  </section>
 
-
-<!-- ============================================================
-     ABOUT
-============================================================ -->
-<section id="about">
-  <div class="container">
-    <h2 class="section-heading">About</h2>
-    <div class="about-body">
-      <p>I'm a sophomore at Los Altos High School in Los Altos, CA. I tend to notice when something isn't working and then keep going until I figure out why. That's how CivicPulse started. I kept seeing potholes and broken streetlights that weren't getting fixed, and realized there was no easy way for residents to tell the city what needed attention. So I built one.</p>
-      <p>Outside of software, I mentor about 60 students a year in Math Kangaroo prep, compete on VEX and FRC robotics teams, and run a STEM Research Club I started at school to connect students with research at nearby universities.</p>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     PROJECTS
-============================================================ -->
-<section id="projects">
-  <div class="container">
-    <h2 class="section-heading">Projects</h2>
-    <div class="project-list">
-
-      <!-- CivicPulse -->
-      <article class="project-entry">
-        <div class="project-header">
-          <span class="project-name">CivicPulse</span>
-          <a class="project-ext-link" href="https://www.losaltosonline.com/beyond_the_classroom/los-altos-high-school-student-builds-civic-reporting-app/article_11694c94-65eb-401e-987d-403e02550b8c.html" target="_blank" rel="noopener noreferrer">Town Crier article &#8599;</a>
+  <!-- ---------------- ABOUT ---------------- -->
+  <section class="page" id="page-about" data-page="about">
+    <div class="container">
+      <div class="page-inner">
+        <h1>About</h1>
+        <div class="prose">
+          <p>I'm a sophomore at Los Altos High School in Los Altos, CA. I tend to notice when something is not working, and I keep going until I understand why. That is roughly how CivicPulse started.</p>
+          <p>I kept walking past cracked sidewalks and broken streetlights around my neighborhood that nobody seemed to fix. It turned out there was no simple way for residents to flag those problems to the city, so I built one.</p>
+          <p>Outside of software, I mentor about 60 students a year in Math Kangaroo prep, compete on the VEX and FRC robotics teams, and run a STEM Research Club I started at LAHS to help students find research opportunities at nearby universities. I also have 200+ volunteer hours across the library, FCSN, and STEM outreach.</p>
         </div>
-        <p class="project-desc">CivicPulse is a platform that lets Los Altos residents report local infrastructure issues, from potholes to broken streetlights, upvote what matters most to them, and track whether anything gets done about it. Residents can drop a pin, upload a photo, and submit a report in under a minute. The app includes a live map of all active reports, community upvoting so the most urgent issues rise to the top, push notifications, and an admin dashboard for city staff. It was covered by the Los Altos Town Crier and is in active use with LAMVCF and the Rotary Club. The iOS app is live on the App Store, with Android submitted for review.</p>
-        <p class="project-stack">React, TypeScript, Firebase, Leaflet.js, Tailwind CSS, iOS, Android</p>
-      </article>
+      </div>
+    </div>
+  </section>
 
-      <!-- TODO: replace with science fair project -->
-      <article class="project-entry">
-        <div class="project-header">
-          <span class="project-name">Science Fair Project</span>
+  <!-- ---------------- PROJECTS ---------------- -->
+  <section class="page" id="page-projects" data-page="projects">
+    <div class="container">
+      <div class="page-inner">
+        <h1>Projects</h1>
+
+        <!-- Project 1: CivicPulse -->
+        <article class="project">
+          <h2><a href="#">CivicPulse</a></h2>
+          <p class="project-meta">
+            <a href="https://www.losaltosonline.com/beyond_the_classroom/los-altos-high-school-student-builds-civic-reporting-app/article_11694c94-65eb-401e-987d-403e02550b8c.html" target="_blank" rel="noopener">Town Crier article &#8599;</a>
+          </p>
+          <figure class="project-image">
+            <img src="images/civicpulse-rotary.png" alt="Devansh receiving a Certificate of Appreciation for CivicPulse from the Rotary Club of Mountain View, with CivicPulse shown on the screen behind." />
+            <figcaption>Receiving a Certificate of Appreciation for CivicPulse from the Rotary Club of Mountain View.</figcaption>
+          </figure>
+          <p class="desc">CivicPulse is a platform where Los Altos residents can report local infrastructure problems, upvote what matters most to them, and track whether anything gets resolved. Residents drop a pin, attach a photo, and submit a report in under a minute. The app has a live map of all active reports, community upvoting so the most urgent issues surface first, push notifications, and an admin dashboard for city staff. It was covered by the Los Altos Town Crier in April 2026 and is in active use with LAMVCF and the Rotary Club. The iOS app is live on the App Store.</p>
+          <p class="stack">React, TypeScript, Firebase, Leaflet.js, Tailwind CSS, iOS, Android</p>
+        </article>
+
+        <!-- Project 2: NTD Drug Discovery Surrogate Model -->
+        <article class="project">
+          <h2><a href="#">Multi-Output Gaussian Process Surrogate Model for NTD Drug Discovery</a></h2>
+          <p class="project-byline">Co-authored with Caleb Suh. Science fair project, in progress.</p>
+          <p class="desc">Drug discovery for neglected tropical diseases is underfunded and computationally expensive. Screening a billion compounds on a single processor core would take 475 years. Caleb and I are building a surrogate modeling pipeline that uses a Multi-Output Gaussian Process trained on molecular fingerprints to predict ADMET properties, meaning Absorption, Distribution, Metabolism, Excretion, and Toxicity, from a molecule's SMILES string alone. Rather than collapsing drug-likeness into a single score, the model treats human safety, absorption, and synthesizability as conflicting objectives on a Pareto front, and uses Expected Hypervolume Improvement to choose the next molecule to evaluate. The goal is to let underfunded NTD researchers skip expensive wet lab screening and go straight to a ranked list of promising candidates. We are validating the approach by simulating rediscovery of a known drug at a fraction of the documented cost and time.</p>
+          <p class="stack">Python, RDKit, GPyTorch, PyTDC, ChEMBL, scikit-learn</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------- ACHIEVEMENTS / HIGHLIGHTS ---------------- -->
+  <section class="page" id="page-achievements" data-page="achievements">
+    <div class="container">
+      <div class="page-inner">
+        <h1>Highlights</h1>
+
+        <div class="highlights-grid">
+
+          <!-- Column item: Math -->
+          <div class="hl-group">
+            <div class="hl-label">Math</div>
+            <p>4th place nationally in Math Kangaroo in 9th grade, and a multi-time national award winner.</p>
+            <p>Mentors about 60 students a year in Math Kangaroo prep. Several have reached national placement.</p>
+            <p>AMC 10 competitor.</p>
+          </div>
+
+          <!-- Column item: Robotics -->
+          <div class="hl-group">
+            <div class="hl-label">Robotics</div>
+            <p>VEX Robotics co-captain. Implemented inertial sensor integration for more reliable autonomous navigation.</p>
+            <p>FRC team member covering assembly, machining, and electrical work, and designed a spindexer mechanism.</p>
+            <p>Completed MIT Beaver Works "Basics of ASICs", covering digital logic and HDL chip design.</p>
+          </div>
+
+          <!-- Column item: Civic Tech -->
+          <div class="hl-group">
+            <div class="hl-label">Civic Tech</div>
+            <p>CivicPulse covered by the <a href="https://www.losaltosonline.com/beyond_the_classroom/los-altos-high-school-student-builds-civic-reporting-app/article_11694c94-65eb-401e-987d-403e02550b8c.html" target="_blank" rel="noopener">Los Altos Town Crier</a>.</p>
+            <p>iOS app live on the App Store. Android submitted for review.</p>
+            <p>Active collaborations with LAMVCF and the Rotary Club.</p>
+          </div>
+
+          <!-- Column item: Community -->
+          <div class="hl-group">
+            <div class="hl-label">Community</div>
+            <p>Founded the STEM Research Club at LAHS to connect students with research at nearby universities.</p>
+            <p>200+ volunteer hours across the library, FCSN, and STEM outreach.</p>
+            <p>JV tennis league champions as team captain.</p>
+          </div>
+
         </div>
-        <p class="project-desc">Science fair project involving multi-objective Bayesian optimization (MOBO) and surrogate modeling, applied to drug discovery for neglected tropical diseases (NTDs). Full description coming soon.</p>
-        <p class="project-stack">Python <!-- TODO: fill in actual stack --></p>
-      </article>
-
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- ---------------- CONTACT ---------------- -->
+  <section class="page" id="page-contact" data-page="contact">
+    <div class="container">
+      <div class="page-inner">
+        <h1>Contact</h1>
+        <p class="contact-text">Feel free to reach out about anything, whether it is CivicPulse, the science fair project, math, or robotics.</p>
+        <p class="contact-links">
+          <a href="mailto:#">Email</a>
+          <span class="sep">&middot;</span>
+          <a href="#">GitHub</a>
+          <span class="sep">&middot;</span>
+          <a href="#">LinkedIn</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
 
 <!-- ============================================================
-     HIGHLIGHTS
-============================================================ -->
-<section id="highlights">
-  <div class="container">
-    <h2 class="section-heading">Highlights</h2>
-    <div class="highlights-grid">
-
-      <div class="highlight-group">
-        <p class="highlight-category">Math</p>
-        <ul class="highlight-items">
-          <li>4th place nationally, Math Kangaroo (9th grade), multi-time national award winner</li>
-          <li>Mentored 60+ students in Math Kangaroo prep since 8th grade, several reached national placement</li>
-          <li>AMC 10 competitor</li>
-        </ul>
-      </div>
-
-      <div class="highlight-group">
-        <p class="highlight-category">Robotics</p>
-        <ul class="highlight-items">
-          <li>VEX Robotics co-captain, implemented inertial sensor integration for autonomous navigation</li>
-          <li>FRC team member, assembly, machining, electrical, designed a spindexer mechanism</li>
-          <li>Completed MIT Beaver Works "Basics of ASICs"</li>
-        </ul>
-      </div>
-
-      <div class="highlight-group">
-        <p class="highlight-category">Civic Tech</p>
-        <ul class="highlight-items">
-          <li>CivicPulse covered by the <a href="https://www.losaltosonline.com/beyond_the_classroom/los-altos-high-school-student-builds-civic-reporting-app/article_11694c94-65eb-401e-987d-403e02550b8c.html" target="_blank" rel="noopener noreferrer">Los Altos Town Crier</a></li>
-          <li>iOS app live on the App Store, Android submitted for review</li>
-          <li>Active collaborations with LAMVCF and the Rotary Club</li>
-        </ul>
-      </div>
-
-      <div class="highlight-group">
-        <p class="highlight-category">Community</p>
-        <ul class="highlight-items">
-          <li>Founded STEM Research Club at LAHS to connect students with college research opportunities</li>
-          <li>100+ volunteer hours across mentorship, FCSN, and STEM outreach</li>
-          <li>FCSN volunteer (Friends of Children with Special Needs)</li>
-          <li>JV tennis league champions as team captain</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     CONTACT
-============================================================ -->
-<section id="contact">
-  <div class="container">
-    <h2 class="section-heading">Contact</h2>
-    <p class="contact-intro">Feel free to reach out about anything.</p>
-    <div class="contact-links">
-      <a href="mailto:devansh.sanghavi@gmail.com">Email</a>
-      <span class="sep" aria-hidden="true">&middot;</span>
-      <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <span class="sep" aria-hidden="true">&middot;</span>
-      <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     FOOTER
-============================================================ -->
+     FOOTER, VISIBLE ON ALL PAGES
+     ============================================================ -->
 <footer>
   <p>&copy; 2026 Devansh Sanghavi</p>
 </footer>
 
-
+<!-- ============================================================
+     PAGE SWITCHING SCRIPT
+     ============================================================ -->
 <script>
-  /* Sticky nav: add white background once page scrolls */
-  var nav = document.getElementById('site-nav');
-  window.addEventListener('scroll', function () {
-    nav.classList.toggle('scrolled', window.scrollY > 20);
-  }, { passive: true });
+  (function () {
+    // The set of valid page names, matching the data-page attributes.
+    var PAGES = ['home', 'about', 'projects', 'achievements', 'contact'];
 
-  /* Mobile menu: toggle on button click, close on link click */
-  var toggle = document.getElementById('nav-toggle');
-  var mobileMenu = document.getElementById('nav-mobile');
-  toggle.addEventListener('click', function () {
-    var open = mobileMenu.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-  });
-  mobileMenu.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      mobileMenu.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Open menu');
+    var navLinkEls = document.querySelectorAll('.nav-links a');
+    var navLinksContainer = document.getElementById('navLinks');
+    var navToggle = document.getElementById('navToggle');
+
+    // Show one page, hide the rest, and mark the matching nav link active.
+    function showPage(page) {
+      if (PAGES.indexOf(page) === -1) {
+        page = 'home';
+      }
+
+      // Toggle the visible section.
+      PAGES.forEach(function (name) {
+        var section = document.getElementById('page-' + name);
+        if (section) {
+          section.classList.toggle('active', name === page);
+        }
+      });
+
+      // Update active styling on the nav links.
+      navLinkEls.forEach(function (link) {
+        link.classList.toggle('active', link.getAttribute('data-page') === page);
+      });
+
+      // Jump to the top so each page starts at the top, no scrolling feel.
+      window.scrollTo(0, 0);
+    }
+
+    // Read the current hash and return a clean page name.
+    function pageFromHash() {
+      var hash = window.location.hash.replace('#', '').toLowerCase();
+      return PAGES.indexOf(hash) !== -1 ? hash : 'home';
+    }
+
+    // Wire up every element carrying a data-page attribute (brand + nav links).
+    document.querySelectorAll('[data-page]').forEach(function (el) {
+      // Only intercept clicks on anchors that act as navigation.
+      if (el.tagName.toLowerCase() === 'a') {
+        el.addEventListener('click', function (e) {
+          var page = el.getAttribute('data-page');
+          if (PAGES.indexOf(page) !== -1) {
+            e.preventDefault();
+            window.location.hash = page === 'home' ? '' : page;
+            showPage(page);
+            // Close the mobile menu after a selection.
+            navLinksContainer.classList.remove('open');
+          }
+        });
+      }
     });
-  });
+
+    // Respond to manual hash changes (back/forward buttons, direct edits).
+    window.addEventListener('hashchange', function () {
+      showPage(pageFromHash());
+    });
+
+    // Mobile navigation toggle.
+    navToggle.addEventListener('click', function () {
+      navLinksContainer.classList.toggle('open');
+    });
+
+    // On initial load, show whichever page the hash points to.
+    showPage(pageFromHash());
+  })();
 </script>
 
 </body>
