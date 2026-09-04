@@ -13,6 +13,22 @@
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
 <meta name="theme-color" content="#1E40AF" />
 
+<!-- Social preview card, shown when the link is shared. -->
+<link rel="canonical" href="https://devanshsanghavi.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Devansh Sanghavi" />
+<meta property="og:title" content="Devansh Sanghavi" />
+<meta property="og:description" content="Junior at Los Altos High School. Civic tech, AI evaluation research, math, and robotics." />
+<meta property="og:url" content="https://devanshsanghavi.com/" />
+<meta property="og:image" content="https://devanshsanghavi.com/images/og-card.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Devansh Sanghavi, with the site's blue D mark." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Devansh Sanghavi" />
+<meta name="twitter:description" content="Junior at Los Altos High School. Civic tech, AI evaluation research, math, and robotics." />
+<meta name="twitter:image" content="https://devanshsanghavi.com/images/og-card.png" />
+
 <!-- Inter from Google Fonts, weights 400 / 500 / 600 only -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -94,6 +110,16 @@
     font-weight: 600;
     font-size: 16px;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  /* The D mark sitting beside the name. Decorative, the name carries it. */
+  .brand-mark {
+    width: 22px;
+    height: 22px;
+    display: block;
   }
 
   .brand:hover {
@@ -455,7 +481,10 @@
 <nav>
   <div class="nav-inner">
     <!-- Brand returns to the home page. -->
-    <a href="#home" class="brand" data-page="home">Devansh Sanghavi</a>
+    <a href="#home" class="brand" data-page="home">
+      <img class="brand-mark" src="images/favicon.svg" alt="" />
+      Devansh Sanghavi
+    </a>
 
     <!-- Mobile toggle button. -->
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">Menu</button>
