@@ -555,6 +555,10 @@
         <article class="project">
           <h2>Multi-Output Gaussian Process Surrogate Model for NTD Drug Discovery</h2>
           <p class="project-byline">Co-authored with Caleb Suh. Science fair project, in progress.</p>
+          <figure class="project-image">
+            <img src="images/mogp-benchmark.png" alt="Two line charts comparing MOGP against GP-MOBO, Random Search, Single-Objective BO, and a Greedy Filter across a multi-seed benchmark. The left panel plots hypervolume against the number of molecules evaluated, with MOGP reaching about 0.35 while the next best baseline reaches about 0.19. The right panel plots Pareto-front size against molecules evaluated, with MOGP finishing highest at about 50." />
+            <figcaption>Hypervolume and Pareto-front size against molecules evaluated, MOGP compared with four baselines.</figcaption>
+          </figure>
           <p class="desc">Drug discovery for neglected tropical diseases is underfunded and computationally expensive. Screening a billion compounds on a single processor core would take 475 years. Caleb and I are building a surrogate modeling pipeline that uses a Multi-Output Gaussian Process trained on molecular fingerprints to predict ADMET properties, meaning Absorption, Distribution, Metabolism, Excretion, and Toxicity, from a molecule's SMILES string alone. Rather than collapsing drug-likeness into a single score, the model treats human safety, absorption, and synthesizability as conflicting objectives on a Pareto front, and uses Expected Hypervolume Improvement to choose the next molecule to evaluate. The goal is to let underfunded NTD researchers skip expensive wet lab screening and go straight to a ranked list of promising candidates. We are validating the approach by simulating rediscovery of a known drug at a fraction of the documented cost and time.</p>
           <p class="stack">Python, RDKit, GPyTorch, PyTDC, ChEMBL, scikit-learn</p>
         </article>
