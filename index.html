@@ -244,6 +244,12 @@
     margin: 0 10px;
   }
 
+  /* A separator stays with the link it introduces. */
+  .home-links .pair,
+  .contact-links .pair {
+    white-space: nowrap;
+  }
+
   /* ============================================================
      ABOUT PAGE
      ============================================================ */
@@ -418,6 +424,25 @@
       font-size: 16px;
     }
 
+    /* The link rows wrap on a phone, and a wrapped dot separator strands
+       itself at the start or end of a line. Space the links instead. */
+    .home-links,
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 20px;
+    }
+
+    .home-links .pair,
+    .contact-links .pair {
+      display: contents;
+    }
+
+    .home-links .sep,
+    .contact-links .sep {
+      display: none;
+    }
+
     /* Shrink screenshots so two still fit across a phone. */
     .project-images {
       gap: 12px;
@@ -513,10 +538,9 @@
       <p class="home-tagline">Junior at Los Altos High School. I build civic tech, research how AI models are evaluated, compete in math, and do robotics.</p>
       <p class="home-links">
         <a href="https://civicpulse.pro/" target="_blank" rel="noopener">CivicPulse &#8599;</a>
-        <span class="sep">&middot;</span>
-        <a href="https://github.com/devanshsanghavi-droid" target="_blank" rel="noopener">GitHub &#8599;</a>
-        <span class="sep">&middot;</span>
-        <a href="mailto:devansh.sanghavi@gmail.com">Email</a>
+        <span class="pair"><span class="sep">&middot;</span><a href="https://github.com/devanshsanghavi-droid" target="_blank" rel="noopener">GitHub &#8599;</a></span>
+        <span class="pair"><span class="sep">&middot;</span><a href="https://www.linkedin.com/in/devansh-sanghavi-146941354/" target="_blank" rel="noopener">LinkedIn &#8599;</a></span>
+        <span class="pair"><span class="sep">&middot;</span><a href="mailto:devansh.sanghavi@gmail.com">Email</a></span>
       </p>
     </div>
   </section>
@@ -712,10 +736,8 @@
         <p class="contact-text">Feel free to reach out about anything, whether it is CivicPulse, AI evaluation, the science fair project, math, or robotics.</p>
         <p class="contact-links">
           <a href="mailto:devansh.sanghavi@gmail.com">devansh.sanghavi@gmail.com</a>
-          <span class="sep">&middot;</span>
-          <a href="https://github.com/devanshsanghavi-droid" target="_blank" rel="noopener">GitHub</a>
-          <span class="sep">&middot;</span>
-          <a href="https://www.linkedin.com/in/devansh-sanghavi-146941354/" target="_blank" rel="noopener">LinkedIn</a>
+          <span class="pair"><span class="sep">&middot;</span><a href="https://github.com/devanshsanghavi-droid" target="_blank" rel="noopener">GitHub</a></span>
+          <span class="pair"><span class="sep">&middot;</span><a href="https://www.linkedin.com/in/devansh-sanghavi-146941354/" target="_blank" rel="noopener">LinkedIn</a></span>
         </p>
       </div>
     </div>
