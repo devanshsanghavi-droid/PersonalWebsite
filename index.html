@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Devansh Sanghavi</title>
-<meta name="description" content="Devansh Sanghavi, a sophomore at Los Altos High School. Civic tech, math, and robotics." />
+<meta name="description" content="Devansh Sanghavi, a sophomore at Los Altos High School. Civic tech, AI evaluation research, math, and robotics." />
 
 <!-- Inter from Google Fonts, weights 400 / 500 / 600 only -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -250,10 +250,15 @@
     color: var(--accent);
   }
 
-  /* The small secondary link under a project title (e.g. article link). */
+  /* The small secondary links under a project title (e.g. article link). */
   .project-meta {
     font-size: 14px;
     margin-bottom: 14px;
+  }
+
+  .project-meta .sep {
+    color: var(--muted);
+    margin: 0 8px;
   }
 
   .project-byline {
@@ -283,6 +288,21 @@
     font-size: 13px;
     color: var(--muted);
     margin-top: 8px;
+  }
+
+  /* A row of screenshots. Phone captures sit side by side rather than stacked. */
+  .project-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  /* Fixed width so tall phone captures do not dominate the entry. */
+  .project-images .project-image {
+    margin-bottom: 0;
+    flex: 0 0 200px;
+    max-width: 200px;
   }
 
   /* Tech stack line under each project. */
@@ -361,6 +381,16 @@
 
     .home-tagline {
       font-size: 16px;
+    }
+
+    /* Shrink screenshots so two still fit across a phone. */
+    .project-images {
+      gap: 12px;
+    }
+
+    .project-images .project-image {
+      flex: 0 0 calc(50% - 6px);
+      max-width: calc(50% - 6px);
     }
 
     /* Collapse the highlights grid to a single column. */
@@ -442,13 +472,13 @@
   <section class="page" id="page-home" data-page="home">
     <div class="home-inner">
       <h1 class="home-name">Devansh Sanghavi</h1>
-      <p class="home-tagline">Sophomore at Los Altos High School. I build civic tech, compete in math, and do robotics.</p>
+      <p class="home-tagline">Sophomore at Los Altos High School. I build civic tech, research how AI models are evaluated, compete in math, and do robotics.</p>
       <p class="home-links">
-        <a href="#">CivicPulse &#8599;</a>
+        <a href="https://civicpulse.pro/" target="_blank" rel="noopener">CivicPulse &#8599;</a>
         <span class="sep">&middot;</span>
-        <a href="#">GitHub &#8599;</a>
+        <a href="https://github.com/devanshsanghavi-droid" target="_blank" rel="noopener">GitHub &#8599;</a>
         <span class="sep">&middot;</span>
-        <a href="mailto:#">Email</a>
+        <a href="mailto:devansh.sanghavi@gmail.com">Email</a>
       </p>
     </div>
   </section>
@@ -461,7 +491,8 @@
         <div class="prose">
           <p>I'm a sophomore at Los Altos High School in Los Altos, CA. I tend to notice when something is not working, and I keep going until I understand why. That is roughly how CivicPulse started.</p>
           <p>I kept walking past cracked sidewalks and broken streetlights around my neighborhood that nobody seemed to fix. It turned out there was no simple way for residents to flag those problems to the city, so I built one.</p>
-          <p>Outside of software, I mentor about 60 students a year in Math Kangaroo prep, compete on the VEX and FRC robotics teams, and run a STEM Research Club I started at LAHS to help students find research opportunities at nearby universities. I also have 200+ volunteer hours across the library, FCSN, and STEM outreach.</p>
+          <p>Right now I am a research intern at Paper Lantern, working with a team led by former Google DeepMind executives on how frontier AI models get evaluated. I spend my time mapping the landscape of benchmarks, arenas, and RL environments, figuring out what each one actually measures and why a handful of them became standards while most were built and then forgotten.</p>
+          <p>Outside of software, I mentor about 60 students a year in Math Kangaroo prep, compete on the VEX and FRC robotics teams, debate parliamentary for the speech and debate team, and run the STEM Research Club I started at LAHS. I make a podcast about chip design, and I have 200+ volunteer hours across the library, FCSN, and STEM outreach.</p>
         </div>
       </div>
     </div>
@@ -473,10 +504,22 @@
       <div class="page-inner">
         <h1>Projects</h1>
 
-        <!-- Project 1: CivicPulse -->
+        <!-- Project 1: Paper Lantern internship -->
         <article class="project">
-          <h2><a href="#">CivicPulse</a></h2>
+          <h2>Research Intern, Paper Lantern</h2>
+          <p class="project-byline">Working with a team led by former Google DeepMind executives. Aug 2026, ongoing.</p>
+          <p class="desc">Frontier models have effectively consumed the open internet as training data, and yet they still fall short on the tasks worth the most in our economy, the ones that need deep expertise, long term thinking, or taste. Closing that gap takes human judgement and verifiable outcomes, which is why benchmarks, arenas, and RL environments have grown into a multi billion dollar industry of their own. My work is a survey of that landscape. I am cataloguing which evaluation efforts exist, what model capability each one actually tests, how it collects human or verifiable judgements, and how it found an audience, including the ten or so that were built and never caught on. I map them along dimensions like domain, task complexity, and accessibility, meaning whether only a well funded lab can evaluate on it or whether an ordinary person can contribute. The point of the survey is to find a capability that is measurably weak, prove it with data rather than assert it, and then build the evaluation and training data that would improve it.</p>
+          <p class="stack">Benchmarks, arenas, RL environments, evaluation design, literature review</p>
+        </article>
+
+        <!-- Project 2: CivicPulse -->
+        <article class="project">
+          <h2><a href="https://civicpulse.pro/" target="_blank" rel="noopener">CivicPulse</a></h2>
           <p class="project-meta">
+            <a href="https://civicpulse.pro/" target="_blank" rel="noopener">civicpulse.pro &#8599;</a>
+            <span class="sep">&middot;</span>
+            <a href="https://apps.apple.com/us/app/civic-pulse/id6760249208" target="_blank" rel="noopener">App Store &#8599;</a>
+            <span class="sep">&middot;</span>
             <a href="https://www.losaltosonline.com/beyond_the_classroom/los-altos-high-school-student-builds-civic-reporting-app/article_11694c94-65eb-401e-987d-403e02550b8c.html" target="_blank" rel="noopener">Town Crier article &#8599;</a>
           </p>
           <figure class="project-image">
@@ -487,12 +530,66 @@
           <p class="stack">React, TypeScript, Firebase, Leaflet.js, Tailwind CSS, iOS, Android</p>
         </article>
 
-        <!-- Project 2: NTD Drug Discovery Surrogate Model -->
+        <!-- Project 3: Carta -->
         <article class="project">
-          <h2><a href="#">Multi-Output Gaussian Process Surrogate Model for NTD Drug Discovery</a></h2>
+          <h2>Carta</h2>
+          <p class="project-byline">Congressional App Challenge entry for CA-16. In progress, 591 tests, not yet released.</p>
+          <p class="project-meta">
+            <a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">GitHub repository &#8599;</a>
+          </p>
+          <div class="project-images">
+            <figure class="project-image">
+              <img src="images/carta-home.png" alt="Carta's home screen, listing benefits notices as countdown cards. A red card reads 2 days left for a CalFresh renewal, an amber card reads 11 days left for benefits stopping, and a green card below shows 46." />
+              <figcaption>Every notice becomes a countdown, colored by how little time is left.</figcaption>
+            </figure>
+            <figure class="project-image">
+              <img src="images/carta-notice-detail.png" alt="Carta's notice detail screen, breaking a CalFresh letter into plain language sections headed What this says, What you must do, By when, and What to bring, with the deadline given as Saturday, September 5, 2026." />
+              <figcaption>The letter rewritten as what it says, what to do, and by when.</figcaption>
+            </figure>
+          </div>
+          <p class="desc">During the 2023-24 Medicaid unwinding, more than 25 million people lost coverage, and among states reporting a reason, KFF's tracker counts 69% of those disenrollments as procedural, meaning paperwork rather than a finding of ineligibility. They were already enrolled, so I am building Carta for retention rather than enrollment. A recipient photographs the renewal letter, a CalFresh SAR 7 or a Medi-Cal redetermination, and the app reads it on the phone, finds the deadline buried inside, and schedules reminders against it. Nothing on that path touches the network, enforced by a test that disables fetch, XMLHttpRequest, WebSocket, and the native bridge, verifies the sabotage really throws, then replays 79 recorded scans and fails on any attempt. A deterministic extraction cascade reaches 96.4% precision on core fields and 100% on every date the app schedules against, measured across 23 photographs shot in nine physical conditions rather than on clean synthetic text. An optional on-device Qwen2.5-1.5B model rewrites a notice in plain language at 1.3 seconds to first token and 37 tokens per second on an iPhone, held to a hand-written GBNF grammar, and it withholds any explanation citing a date the user has not confirmed. It runs in English and Spanish, though that rewrite still answers Spanish letters in English and is unfinished.</p>
+          <p class="stack">React Native, Expo, TypeScript, Apple Vision OCR, llama.rn, Qwen2.5-1.5B, Jest, iOS</p>
+        </article>
+
+        <!-- Project 4: NTD Drug Discovery Surrogate Model -->
+        <article class="project">
+          <h2>Multi-Output Gaussian Process Surrogate Model for NTD Drug Discovery</h2>
           <p class="project-byline">Co-authored with Caleb Suh. Science fair project, in progress.</p>
           <p class="desc">Drug discovery for neglected tropical diseases is underfunded and computationally expensive. Screening a billion compounds on a single processor core would take 475 years. Caleb and I are building a surrogate modeling pipeline that uses a Multi-Output Gaussian Process trained on molecular fingerprints to predict ADMET properties, meaning Absorption, Distribution, Metabolism, Excretion, and Toxicity, from a molecule's SMILES string alone. Rather than collapsing drug-likeness into a single score, the model treats human safety, absorption, and synthesizability as conflicting objectives on a Pareto front, and uses Expected Hypervolume Improvement to choose the next molecule to evaluate. The goal is to let underfunded NTD researchers skip expensive wet lab screening and go straight to a ranked list of promising candidates. We are validating the approach by simulating rediscovery of a known drug at a fraction of the documented cost and time.</p>
           <p class="stack">Python, RDKit, GPyTorch, PyTDC, ChEMBL, scikit-learn</p>
+        </article>
+
+        <!-- Project 5: Voltage Drop -->
+        <article class="project">
+          <h2>Voltage Drop</h2>
+          <p class="project-byline">Solo explainer podcast. Two episodes, both published in April 2026.</p>
+          <p class="project-meta">
+            <a href="https://www.youtube.com/@voltagedroppodcast" target="_blank" rel="noopener">YouTube channel &#8599;</a>
+          </p>
+          <p class="desc">You cannot fabricate a chip in a garage, so I explain chip design out loud instead. Both episodes run about ten minutes. The first is on Cortical Labs' CL1 chip and the roughly 200,000 living human neurons grown on silicon and trained by reinforcement learning to play Doom. The second is on photonic chips replacing copper interconnect, the bottleneck in AI data centers, working through Lightmatter's Passage chiplet, Ayar Labs' TeraPHY, and Q.ANT's NPU 2. Each episode is built from the primary sources, the DishBrain paper for the first and the vendors' own published hardware for the second, rather than from other people's summaries.</p>
+          <p class="stack">Chip design, silicon photonics, biological computing, primary source research, YouTube</p>
+        </article>
+
+        <!-- Project 6: STEM Research Club -->
+        <article class="project">
+          <h2>STEM Research Club</h2>
+          <p class="project-byline">Founded and run at LAHS. Since 10th grade, ongoing.</p>
+          <p class="project-meta">
+            <a href="https://www.instagram.com/stemresearchclub_lahs/" target="_blank" rel="noopener">Instagram &#8599;</a>
+          </p>
+          <p class="desc">I run workshops at LAHS for students who want to do research and have no idea what the first step is. The barrier is not interest, it is that nobody teaches you how to identify what you want to study, how to read an academic paper, or what a cold email to a professor should say. The workshops cover exactly that, plus literature review and resume preparation, and more than 100 people have come through them. We also bring in guest speakers, so far all of them working in AI, including venture capital partners and people at large tech companies, each walking through the path they took. The eventual goal is to connect members with professors and research programs at nearby community colleges and state universities.</p>
+          <p class="stack">Workshops, guest lectures, paper reading, cold outreach, literature review, resume preparation</p>
+        </article>
+
+        <!-- Project 7: Kangaroo Atlas -->
+        <article class="project">
+          <h2>Kangaroo Atlas</h2>
+          <p class="project-byline">Open source, built and not yet deployed.</p>
+          <p class="project-meta">
+            <a href="https://github.com/devanshsanghavi-droid/MathKangarooWebsite" target="_blank" rel="noopener">GitHub repository &#8599;</a>
+          </p>
+          <p class="desc">Past papers tell a student the score, not which skill failed. I run a Math Kangaroo prep program for about 60 students a year. We fix the problem a student missed, and the misconception underneath it survives to the next paper. Kangaroo Atlas is what I built instead. Every one of the 600 wrong answer choices stores the specific misconception that produces it, a rule the build enforces, so a score becomes a diagnosis rather than a number. Behind it sits a prerequisite graph over 91 named skills in 7 strands joined by 106 edges, so a miss on the adaptive diagnostic walks down to the skill underneath. I wrote all 150 problems myself, so no official Math Kangaroo question is ever reproduced, and each one carries a three step hint ladder and, where it needs one, a hand-drawn figure from a set of 25. Timed 75 minute mocks, per skill ladders, and printable worksheets whose answer key carries those explanations all run signed out, with no ads or trackers. It builds to 869 static pages behind 2,138 tests and 102 accessibility assertions, every one of them build-blocking. The goal is a free version of my program that another tutor can self host.</p>
+          <p class="stack">Next.js, TypeScript, Tailwind CSS, Zod, ts-fsrs, Vitest, axe-core, GitHub Actions</p>
         </article>
 
       </div>
@@ -507,11 +604,19 @@
 
         <div class="highlights-grid">
 
+          <!-- Column item: Research -->
+          <div class="hl-group">
+            <div class="hl-label">Research</div>
+            <p>Research intern at Paper Lantern, working with a team led by former Google DeepMind executives on how frontier AI models are evaluated.</p>
+            <p>Surveying benchmarks, arenas, and RL environments to find model capabilities that are measurably weak.</p>
+            <p>Building a multi-output Gaussian process surrogate model for neglected tropical disease drug discovery.</p>
+          </div>
+
           <!-- Column item: Math -->
           <div class="hl-group">
             <div class="hl-label">Math</div>
             <p>4th place nationally in Math Kangaroo in 9th grade, and a multi-time national award winner.</p>
-            <p>Mentors about 60 students a year in Math Kangaroo prep. Several have reached national placement.</p>
+            <p>Runs a Math Kangaroo prep program in its fifth year, teaching about 60 students a year. More than 30 have gone on to win national awards.</p>
             <p>AMC 10 competitor.</p>
             <figure class="project-image" style="margin-top: 16px;">
               <img src="images/math-kangaroo-mentoring.png" alt="Devansh helping a group of younger students work through Math Kangaroo practice problems at a classroom table." />
@@ -531,15 +636,24 @@
           <div class="hl-group">
             <div class="hl-label">Civic Tech</div>
             <p>CivicPulse covered by the <a href="https://www.losaltosonline.com/beyond_the_classroom/los-altos-high-school-student-builds-civic-reporting-app/article_11694c94-65eb-401e-987d-403e02550b8c.html" target="_blank" rel="noopener">Los Altos Town Crier</a>.</p>
-            <p>iOS app live on the App Store. Android submitted for review.</p>
+            <p>iOS app live on the <a href="https://apps.apple.com/us/app/civic-pulse/id6760249208" target="_blank" rel="noopener">App Store</a>. Android submitted for review.</p>
             <p>Active collaborations with LAMVCF and the Rotary Club.</p>
+            <p>Building Carta, an on-device iPhone app that reads government benefits letters so a renewal deadline is never missed.</p>
+          </div>
+
+          <!-- Column item: Speech and Debate -->
+          <div class="hl-group">
+            <div class="hl-label">Speech and Debate</div>
+            <p>Parliamentary debater and state qualifier, ranked in the top 100 teams in the country.</p>
+            <p>PR and social chair. Plans team events, works on funding, advertises the team to other schools, and keeps the record of past results.</p>
           </div>
 
           <!-- Column item: Community -->
           <div class="hl-group">
             <div class="hl-label">Community</div>
-            <p>Founded the STEM Research Club at LAHS to connect students with research at nearby universities.</p>
+            <p>Founded and runs the STEM Research Club at LAHS. 100+ students through its research workshops.</p>
             <p>200+ volunteer hours across the library, FCSN, and STEM outreach.</p>
+            <p>100 of those at the Los Altos Library, organizing and pulling books and running the sorting machine.</p>
             <p>JV tennis league champions as team captain.</p>
           </div>
 
@@ -553,13 +667,13 @@
     <div class="container">
       <div class="page-inner">
         <h1>Contact</h1>
-        <p class="contact-text">Feel free to reach out about anything, whether it is CivicPulse, the science fair project, math, or robotics.</p>
+        <p class="contact-text">Feel free to reach out about anything, whether it is CivicPulse, AI evaluation, the science fair project, math, or robotics.</p>
         <p class="contact-links">
-          <a href="mailto:#">Email</a>
+          <a href="mailto:devansh.sanghavi@gmail.com">devansh.sanghavi@gmail.com</a>
           <span class="sep">&middot;</span>
-          <a href="#">GitHub</a>
+          <a href="https://github.com/devanshsanghavi-droid" target="_blank" rel="noopener">GitHub</a>
           <span class="sep">&middot;</span>
-          <a href="#">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/devansh-sanghavi-146941354/" target="_blank" rel="noopener">LinkedIn</a>
         </p>
       </div>
     </div>
