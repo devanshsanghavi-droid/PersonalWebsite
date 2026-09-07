@@ -202,20 +202,24 @@
   /* ============================================================
      HOME PAGE
      ============================================================ */
-  /* Full viewport height, vertically centered content. */
-  #page-home.active {
-    display: flex;
+  /* The hero sits above the project list rather than filling the screen. */
+  .hero {
+    padding: 104px 0 88px;
+    border-bottom: 1px solid var(--rule);
   }
 
-  #page-home {
-    /* Subtract the nav height so it fills exactly the rest. */
-    min-height: calc(100vh - 61px);
-    align-items: center;
+  .home-projects {
+    padding: 72px 0 96px;
+    /* Clears the sticky nav when the Projects link jumps here. */
+    scroll-margin-top: 76px;
   }
 
-  .home-inner {
-    width: 100%;
-    padding: 0 24px;
+  /* Matches .page-inner h1 so the front page reads like the other pages. */
+  .section-heading {
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 36px;
   }
 
   .home-name {
@@ -358,7 +362,22 @@
   .highlights-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 48px 40px;
+    gap: 60px 48px;
+  }
+
+  /* A rule above each group so the longer entries stay visually separate. */
+  .hl-group {
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+  }
+
+  /* Intro line under a page heading. */
+  .page-lead {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 620px;
+    margin-top: -18px;
+    margin-bottom: 44px;
   }
 
   .hl-label {
@@ -372,7 +391,7 @@
 
   .hl-group p {
     font-size: 15px;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
 
   .hl-group p:last-child {
@@ -519,7 +538,7 @@
     <!-- Right hand navigation links. Each swaps the visible page. -->
     <div class="nav-links" id="navLinks">
       <a href="#about" data-page="about">About</a>
-      <a href="#projects" data-page="projects">Projects</a>
+      <a href="#projects" data-page="home" data-scroll="projects-section">Projects</a>
       <a href="#achievements" data-page="achievements">Achievements</a>
       <a href="#contact" data-page="contact">Contact</a>
     </div>
@@ -533,48 +552,27 @@
 
   <!-- ---------------- HOME ---------------- -->
   <section class="page" id="page-home" data-page="home">
-    <div class="home-inner">
-      <h1 class="home-name">Devansh Sanghavi</h1>
-      <p class="home-tagline">Junior at Los Altos High School. I build civic tech, research how AI models are evaluated, compete in math, and do robotics.</p>
-      <p class="home-links">
-        <a href="https://civicpulse.pro/" target="_blank" rel="noopener">CivicPulse &#8599;</a>
-        <span class="pair"><span class="sep">&middot;</span><a href="https://github.com/devanshsanghavi-droid" target="_blank" rel="noopener">GitHub &#8599;</a></span>
-        <span class="pair"><span class="sep">&middot;</span><a href="https://www.linkedin.com/in/devansh-sanghavi-146941354/" target="_blank" rel="noopener">LinkedIn &#8599;</a></span>
-        <span class="pair"><span class="sep">&middot;</span><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=devansh.sanghavi@gmail.com" target="_blank" rel="noopener">Email &#8599;</a></span>
-      </p>
-    </div>
-  </section>
 
-  <!-- ---------------- ABOUT ---------------- -->
-  <section class="page" id="page-about" data-page="about">
-    <div class="container">
-      <div class="page-inner">
-        <h1>About</h1>
-        <div class="prose">
-          <p>I'm a junior at Los Altos High School in Los Altos, CA. I tend to notice when something is not working, and I keep going until I understand why. That is roughly how CivicPulse started.</p>
-          <p>I kept walking past cracked sidewalks and broken streetlights around my neighborhood that nobody seemed to fix. It turned out there was no simple way for residents to flag those problems to the city, so I built one.</p>
-          <p>Right now I am a research intern at Paper Lantern, working with a team led by former Google DeepMind executives on how frontier AI models get evaluated. I spend my time mapping the landscape of benchmarks, arenas, and RL environments, figuring out what each one actually measures and why a handful of them became standards while most were built and then forgotten.</p>
-          <p>Outside of software, I mentor about 60 students a year in Math Kangaroo prep, compete on the VEX and FRC robotics teams, debate parliamentary for the speech and debate team, and run the STEM Research Club I started at LAHS. I make a podcast about chip design, and I have 200+ volunteer hours across the library, FCSN, and STEM outreach.</p>
-        </div>
+    <!-- Hero -->
+    <div class="hero">
+      <div class="container">
+        <h1 class="home-name">Devansh Sanghavi</h1>
+        <p class="home-tagline">Junior at Los Altos High School. I build civic tech, research how AI models are evaluated, compete in math, and do robotics.</p>
+        <p class="home-links">
+          <a href="https://civicpulse.pro/" target="_blank" rel="noopener">CivicPulse &#8599;</a>
+          <span class="pair"><span class="sep">&middot;</span><a href="https://github.com/devanshsanghavi-droid" target="_blank" rel="noopener">GitHub &#8599;</a></span>
+          <span class="pair"><span class="sep">&middot;</span><a href="https://www.linkedin.com/in/devansh-sanghavi-146941354/" target="_blank" rel="noopener">LinkedIn &#8599;</a></span>
+          <span class="pair"><span class="sep">&middot;</span><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=devansh.sanghavi@gmail.com" target="_blank" rel="noopener">Email &#8599;</a></span>
+        </p>
       </div>
     </div>
-  </section>
 
-  <!-- ---------------- PROJECTS ---------------- -->
-  <section class="page" id="page-projects" data-page="projects">
+    <!-- Every project, listed on the front page. -->
     <div class="container">
-      <div class="page-inner">
-        <h1>Projects</h1>
+      <div class="home-projects" id="projects-section">
+        <h2 class="section-heading">Projects</h2>
 
-        <!-- Project 1: Paper Lantern internship -->
-        <article class="project">
-          <h2>Research Intern, Paper Lantern</h2>
-          <p class="project-byline">Working with a team led by former Google DeepMind executives. Aug 2026, ongoing.</p>
-          <p class="desc">Frontier models have effectively consumed the open internet as training data, and yet they still fall short on the tasks worth the most in our economy, the ones that need deep expertise, long term thinking, or taste. Closing that gap takes human judgement and verifiable outcomes, which is why benchmarks, arenas, and RL environments have grown into a multi billion dollar industry of their own. My work is a survey of that landscape. I am cataloguing which evaluation efforts exist, what model capability each one actually tests, how it collects human or verifiable judgements, and how it found an audience, including the ten or so that were built and never caught on. I map them along dimensions like domain, task complexity, and accessibility, meaning whether only a well funded lab can evaluate on it or whether an ordinary person can contribute. The point of the survey is to find a capability that is measurably weak, prove it with data rather than assert it, and then build the evaluation and training data that would improve it.</p>
-          <p class="stack">Benchmarks, arenas, RL environments, evaluation design, literature review</p>
-        </article>
-
-        <!-- Project 2: CivicPulse -->
+        <!-- Project 1: CivicPulse -->
         <article class="project">
           <h2><a href="https://civicpulse.pro/" target="_blank" rel="noopener">CivicPulse</a></h2>
           <p class="project-meta">
@@ -590,6 +588,18 @@
           </figure>
           <p class="desc">CivicPulse is a platform where Los Altos residents can report local infrastructure problems, upvote what matters most to them, and track whether anything gets resolved. Residents drop a pin, attach a photo, and submit a report in under a minute. The app has a live map of all active reports, community upvoting so the most urgent issues surface first, push notifications, and an admin dashboard for city staff. It was covered by the Los Altos Town Crier in April 2026 and is in active use with LAMVCF and the Rotary Club. The iOS app is live on the App Store.</p>
           <p class="stack">React, TypeScript, Firebase, Leaflet.js, Tailwind CSS, iOS, Android</p>
+        </article>
+
+        <!-- Project 2: NTD Drug Discovery Surrogate Model -->
+        <article class="project">
+          <h2>Multi-Output Gaussian Process Surrogate Model for NTD Drug Discovery</h2>
+          <p class="project-byline">Co-authored with Caleb Suh. Science fair project, in progress.</p>
+          <figure class="project-image">
+            <img src="images/mogp-benchmark.png" alt="Two line charts comparing MOGP against GP-MOBO, Random Search, Single-Objective BO, and a Greedy Filter across a multi-seed benchmark. The left panel plots hypervolume against the number of molecules evaluated, with MOGP reaching about 0.35 while the next best baseline reaches about 0.19. The right panel plots Pareto-front size against molecules evaluated, with MOGP finishing highest at about 50." />
+            <figcaption>Hypervolume and Pareto-front size against molecules evaluated, MOGP compared with four baselines.</figcaption>
+          </figure>
+          <p class="desc">Drug discovery for neglected tropical diseases is underfunded and computationally expensive. Screening a billion compounds on a single processor core would take 475 years. Caleb and I are building a surrogate modeling pipeline that uses a Multi-Output Gaussian Process trained on molecular fingerprints to predict ADMET properties, meaning Absorption, Distribution, Metabolism, Excretion, and Toxicity, from a molecule's SMILES string alone. Rather than collapsing drug-likeness into a single score, the model treats human safety, absorption, and synthesizability as conflicting objectives on a Pareto front, and uses Expected Hypervolume Improvement to choose the next molecule to evaluate. The goal is to let underfunded NTD researchers skip expensive wet lab screening and go straight to a ranked list of promising candidates. We are validating the approach by simulating rediscovery of a known drug at a fraction of the documented cost and time.</p>
+          <p class="stack">Python, RDKit, GPyTorch, PyTDC, ChEMBL, scikit-learn</p>
         </article>
 
         <!-- Project 3: Carta -->
@@ -613,30 +623,15 @@
           <p class="stack">React Native, Expo, TypeScript, Apple Vision OCR, llama.rn, Qwen2.5-1.5B, Jest, iOS</p>
         </article>
 
-        <!-- Project 4: NTD Drug Discovery Surrogate Model -->
+        <!-- Project 4: Paper Lantern internship -->
         <article class="project">
-          <h2>Multi-Output Gaussian Process Surrogate Model for NTD Drug Discovery</h2>
-          <p class="project-byline">Co-authored with Caleb Suh. Science fair project, in progress.</p>
-          <figure class="project-image">
-            <img src="images/mogp-benchmark.png" alt="Two line charts comparing MOGP against GP-MOBO, Random Search, Single-Objective BO, and a Greedy Filter across a multi-seed benchmark. The left panel plots hypervolume against the number of molecules evaluated, with MOGP reaching about 0.35 while the next best baseline reaches about 0.19. The right panel plots Pareto-front size against molecules evaluated, with MOGP finishing highest at about 50." />
-            <figcaption>Hypervolume and Pareto-front size against molecules evaluated, MOGP compared with four baselines.</figcaption>
-          </figure>
-          <p class="desc">Drug discovery for neglected tropical diseases is underfunded and computationally expensive. Screening a billion compounds on a single processor core would take 475 years. Caleb and I are building a surrogate modeling pipeline that uses a Multi-Output Gaussian Process trained on molecular fingerprints to predict ADMET properties, meaning Absorption, Distribution, Metabolism, Excretion, and Toxicity, from a molecule's SMILES string alone. Rather than collapsing drug-likeness into a single score, the model treats human safety, absorption, and synthesizability as conflicting objectives on a Pareto front, and uses Expected Hypervolume Improvement to choose the next molecule to evaluate. The goal is to let underfunded NTD researchers skip expensive wet lab screening and go straight to a ranked list of promising candidates. We are validating the approach by simulating rediscovery of a known drug at a fraction of the documented cost and time.</p>
-          <p class="stack">Python, RDKit, GPyTorch, PyTDC, ChEMBL, scikit-learn</p>
+          <h2>Research Intern, Paper Lantern</h2>
+          <p class="project-byline">Working with a team led by former Google DeepMind executives. Aug 2026, ongoing.</p>
+          <p class="desc">Frontier models have effectively consumed the open internet as training data, and yet they still fall short on the tasks worth the most in our economy, the ones that need deep expertise, long term thinking, or taste. Closing that gap takes human judgement and verifiable outcomes, which is why benchmarks, arenas, and RL environments have grown into a multi billion dollar industry of their own. My work is a survey of that landscape. I am cataloguing which evaluation efforts exist, what model capability each one actually tests, how it collects human or verifiable judgements, and how it found an audience, including the ten or so that were built and never caught on. I map them along dimensions like domain, task complexity, and accessibility, meaning whether only a well funded lab can evaluate on it or whether an ordinary person can contribute. The point of the survey is to find a capability that is measurably weak, prove it with data rather than assert it, and then build the evaluation and training data that would improve it.</p>
+          <p class="stack">Benchmarks, arenas, RL environments, evaluation design, literature review</p>
         </article>
 
-        <!-- Project 5: Voltage Drop -->
-        <article class="project">
-          <h2>Voltage Drop</h2>
-          <p class="project-byline">Solo explainer podcast. Two episodes, both published in April 2026.</p>
-          <p class="project-meta">
-            <a href="https://www.youtube.com/@voltagedroppodcast" target="_blank" rel="noopener">YouTube channel &#8599;</a>
-          </p>
-          <p class="desc">You cannot fabricate a chip in a garage, so I explain chip design out loud instead. Both episodes run about ten minutes. The first is on Cortical Labs' CL1 chip and the roughly 200,000 living human neurons grown on silicon and trained by reinforcement learning to play Doom. The second is on photonic chips replacing copper interconnect, the bottleneck in AI data centers, working through Lightmatter's Passage chiplet, Ayar Labs' TeraPHY, and Q.ANT's NPU 2. Each episode is built from the primary sources, the DishBrain paper for the first and the vendors' own published hardware for the second, rather than from other people's summaries.</p>
-          <p class="stack">Chip design, silicon photonics, biological computing, primary source research, YouTube</p>
-        </article>
-
-        <!-- Project 6: STEM Research Club -->
+        <!-- Project 5: STEM Research Club -->
         <article class="project">
           <h2>STEM Research Club</h2>
           <p class="project-byline">Founded and run at LAHS. Since 10th grade, ongoing.</p>
@@ -647,26 +642,54 @@
           <p class="stack">Workshops, guest lectures, paper reading, cold outreach, literature review, resume preparation</p>
         </article>
 
-        <!-- Project 7: Kangaroo Atlas -->
+        <!-- Project 6: Kangaroo Atlas -->
         <article class="project">
           <h2>Kangaroo Atlas</h2>
           <p class="project-byline">Open source, built and not yet deployed.</p>
           <p class="project-meta">
             <a href="https://github.com/devanshsanghavi-droid/MathKangarooWebsite" target="_blank" rel="noopener">GitHub repository &#8599;</a>
           </p>
-          <p class="desc">Past papers tell a student the score, not which skill failed. I run a Math Kangaroo prep program for about 60 students a year. We fix the problem a student missed, and the misconception underneath it survives to the next paper. Kangaroo Atlas is what I built instead. Every one of the 600 wrong answer choices stores the specific misconception that produces it, a rule the build enforces, so a score becomes a diagnosis rather than a number. Behind it sits a prerequisite graph over 91 named skills in 7 strands joined by 106 edges, so a miss on the adaptive diagnostic walks down to the skill underneath. I wrote all 150 problems myself, so no official Math Kangaroo question is ever reproduced, and each one carries a three step hint ladder and, where it needs one, a hand-drawn figure from a set of 25. Timed 75 minute mocks, per skill ladders, and printable worksheets whose answer key carries those explanations all run signed out, with no ads or trackers. It builds to 869 static pages behind 2,138 tests and 102 accessibility assertions, every one of them build-blocking. The goal is a free version of my program that another tutor can self host.</p>
+          <p class="desc">Past papers tell a student the score, not which skill failed. I run a Math Kangaroo prep program for about 60 students a year. Most of that work is in person at the schools, sitting at a table with a group of kids and working a problem through out loud, and that room is where the program actually lives. We fix the problem a student missed, and the misconception underneath it survives to the next paper. Kangaroo Atlas is what I built instead. Every one of the 600 wrong answer choices stores the specific misconception that produces it, a rule the build enforces, so a score becomes a diagnosis rather than a number. Behind it sits a prerequisite graph over 91 named skills in 7 strands joined by 106 edges, so a miss on the adaptive diagnostic walks down to the skill underneath. I wrote all 150 problems myself, so no official Math Kangaroo question is ever reproduced, and each one carries a three step hint ladder and, where it needs one, a hand-drawn figure from a set of 25. Every one is hand written rather than generated or adapted, and each took a long sitting to analyze, because a problem is only worth including once it tests the skill it claims to test instead of rewarding a trick the student happens to have seen. Timed 75 minute mocks, per skill ladders, and printable worksheets whose answer key carries those explanations all run signed out, with no ads or trackers. It builds to 869 static pages behind 2,138 tests and 102 accessibility assertions, every one of them build-blocking. The goal is a free version of my program that another tutor can self host.</p>
           <p class="stack">Next.js, TypeScript, Tailwind CSS, Zod, ts-fsrs, Vitest, axe-core, GitHub Actions</p>
         </article>
 
+        <!-- Project 7: Voltage Drop -->
+        <article class="project">
+          <h2>Voltage Drop</h2>
+          <p class="project-byline">Solo explainer podcast. Two episodes, both published in April 2026.</p>
+          <p class="project-meta">
+            <a href="https://www.youtube.com/@voltagedroppodcast" target="_blank" rel="noopener">YouTube channel &#8599;</a>
+          </p>
+          <p class="desc">You cannot fabricate a chip in a garage, so I explain chip design out loud instead. Both episodes run about ten minutes. The first is on Cortical Labs' CL1 chip and the roughly 200,000 living human neurons grown on silicon and trained by reinforcement learning to play Doom. The second is on photonic chips replacing copper interconnect, the bottleneck in AI data centers, working through Lightmatter's Passage chiplet, Ayar Labs' TeraPHY, and Q.ANT's NPU 2. Each episode is built from the primary sources, the DishBrain paper for the first and the vendors' own published hardware for the second, rather than from other people's summaries.</p>
+          <p class="stack">Chip design, silicon photonics, biological computing, primary source research, YouTube</p>
+        </article>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ---------------- ABOUT ---------------- -->
+  <section class="page" id="page-about" data-page="about">
+    <div class="container">
+      <div class="page-inner">
+        <h1>About</h1>
+        <div class="prose">
+          <p>I'm a junior at Los Altos High School in Los Altos, CA. I tend to notice when something is not working, and I keep going until I understand why. That is roughly how CivicPulse started.</p>
+          <p>I kept walking past cracked sidewalks and broken streetlights around my neighborhood that nobody seemed to fix. It turned out there was no simple way for residents to flag those problems to the city, so I built one.</p>
+          <p>Right now I am a research intern at Paper Lantern, working with a team led by former Google DeepMind executives on how frontier AI models get evaluated. I spend my time mapping the landscape of benchmarks, arenas, and RL environments, figuring out what each one actually measures and why a handful of them became standards while most were built and then forgotten.</p>
+          <p>Outside of software, I mentor about 60 students a year in Math Kangaroo prep, compete on the VEX and FRC robotics teams, debate parliamentary for the speech and debate team, and run the STEM Research Club I started at LAHS. I make a podcast about chip design, and I have 200+ volunteer hours across the library, FCSN, and STEM outreach.</p>
+        </div>
       </div>
     </div>
   </section>
+
 
   <!-- ---------------- ACHIEVEMENTS / HIGHLIGHTS ---------------- -->
   <section class="page" id="page-achievements" data-page="achievements">
     <div class="container">
       <div class="page-inner">
         <h1>Highlights</h1>
+        <p class="page-lead">A running record of the things I have competed in, built, led, or shown up for. The projects on the front page go into more depth.</p>
 
         <div class="highlights-grid">
 
@@ -674,15 +697,16 @@
           <div class="hl-group">
             <div class="hl-label">Research</div>
             <p>Research intern at Paper Lantern, working with a team led by former Google DeepMind executives on how frontier AI models are evaluated.</p>
-            <p>Surveying benchmarks, arenas, and RL environments to find model capabilities that are measurably weak.</p>
-            <p>Building a multi-output Gaussian process surrogate model for neglected tropical disease drug discovery.</p>
+            <p>The work is a survey of that landscape, cataloguing what each benchmark, arena, and RL environment actually measures, how it collects human or verifiable judgement, and why a handful became standards while most were built and then forgotten.</p>
+            <p>Co-authoring a multi-output Gaussian process surrogate model for neglected tropical disease drug discovery, meant to let an underfunded lab skip a round of wet lab screening.</p>
           </div>
 
           <!-- Column item: Math -->
           <div class="hl-group">
             <div class="hl-label">Math</div>
             <p>4th place nationally in Math Kangaroo in 10th grade, and a multi-time national award winner.</p>
-            <p>Runs a Math Kangaroo prep program in its fifth year, teaching about 60 students a year. More than 30 have gone on to win national awards.</p>
+            <p>Runs a Math Kangaroo prep program in its fifth year, teaching about 60 students a year, mostly in person at the schools. More than 30 have gone on to win national awards.</p>
+            <p>Built Kangaroo Atlas, the free and open source platform behind the program, around 150 hand written problems and a prerequisite graph over 91 named skills.</p>
             <p>AMC 10 competitor.</p>
             <figure class="project-image" style="margin-top: 16px;">
               <img src="images/math-kangaroo-mentoring.png" alt="Devansh helping a group of younger students work through Math Kangaroo practice problems at a classroom table." />
@@ -693,18 +717,18 @@
           <!-- Column item: Robotics -->
           <div class="hl-group">
             <div class="hl-label">Robotics</div>
-            <p>VEX Robotics co-captain. Implemented inertial sensor integration for more reliable autonomous navigation.</p>
-            <p>FRC team member covering assembly, machining, and electrical work, and designed a spindexer mechanism.</p>
+            <p>VEX Robotics co-captain. Implemented inertial sensor integration so the autonomous routine held its heading instead of drifting off course.</p>
+            <p>FRC team member covering assembly, machining, and electrical work, and designed a spindexer, the rotating carousel that lines game pieces up one at a time.</p>
             <p>Completed MIT Beaver Works "Basics of ASICs", covering digital logic and HDL chip design.</p>
           </div>
 
           <!-- Column item: Civic Tech -->
           <div class="hl-group">
             <div class="hl-label">Civic Tech</div>
-            <p>CivicPulse covered by the <a href="https://www.losaltosonline.com/beyond_the_classroom/los-altos-high-school-student-builds-civic-reporting-app/article_11694c94-65eb-401e-987d-403e02550b8c.html" target="_blank" rel="noopener">Los Altos Town Crier</a>.</p>
+            <p>CivicPulse covered by the <a href="https://www.losaltosonline.com/beyond_the_classroom/los-altos-high-school-student-builds-civic-reporting-app/article_11694c94-65eb-401e-987d-403e02550b8c.html" target="_blank" rel="noopener">Los Altos Town Crier</a> in April 2026.</p>
             <p>iOS app live on the <a href="https://apps.apple.com/us/app/civic-pulse/id6760249208" target="_blank" rel="noopener">App Store</a>. Android submitted for review.</p>
-            <p>Active collaborations with LAMVCF and the Rotary Club.</p>
-            <p>Building Carta, an on-device iPhone app that reads government benefits letters so a renewal deadline is never missed.</p>
+            <p>Active collaborations with LAMVCF and the Rotary Club, who gave CivicPulse a Certificate of Appreciation.</p>
+            <p>Building Carta, an on-device iPhone app that reads a government benefits letter and makes sure the deadline buried inside it is not missed.</p>
           </div>
 
           <!-- Column item: Speech and Debate -->
@@ -717,7 +741,7 @@
           <!-- Column item: Community -->
           <div class="hl-group">
             <div class="hl-label">Community</div>
-            <p>Founded and runs the STEM Research Club at LAHS. 100+ students through its research workshops.</p>
+            <p>Founded and runs the STEM Research Club at LAHS, which has taught 100+ students how to find a research interest, read an academic paper, and write a cold email to a professor.</p>
             <p>200+ volunteer hours across the library, FCSN, and STEM outreach.</p>
             <p>100 of those at the Los Altos Library, organizing and pulling books and running the sorting machine.</p>
             <p>JV tennis league champions as team captain.</p>
@@ -758,14 +782,15 @@
 <script>
   (function () {
     // The set of valid page names, matching the data-page attributes.
-    var PAGES = ['home', 'about', 'projects', 'achievements', 'contact'];
+    var PAGES = ['home', 'about', 'achievements', 'contact'];
 
     var navLinkEls = document.querySelectorAll('.nav-links a');
     var navLinksContainer = document.getElementById('navLinks');
     var navToggle = document.getElementById('navToggle');
 
     // Show one page, hide the rest, and mark the matching nav link active.
-    function showPage(page) {
+    // scrollTo is an element id to jump to instead of the top of the page.
+    function showPage(page, scrollTo) {
       if (PAGES.indexOf(page) === -1) {
         page = 'home';
       }
@@ -783,14 +808,23 @@
         link.classList.toggle('active', link.getAttribute('data-page') === page);
       });
 
-      // Jump to the top so each page starts at the top, no scrolling feel.
-      window.scrollTo(0, 0);
+      // Jump to the top, or to a named section when one was asked for.
+      var target = scrollTo ? document.getElementById(scrollTo) : null;
+      if (target) {
+        target.scrollIntoView();
+      } else {
+        window.scrollTo(0, 0);
+      }
     }
 
-    // Read the current hash and return a clean page name.
-    function pageFromHash() {
+    // Read the current hash and return the page plus any section to jump to.
+    // #projects is kept working as a URL even though it now lives on home.
+    function fromHash() {
       var hash = window.location.hash.replace('#', '').toLowerCase();
-      return PAGES.indexOf(hash) !== -1 ? hash : 'home';
+      if (hash === 'projects') {
+        return { page: 'home', scroll: 'projects-section' };
+      }
+      return { page: PAGES.indexOf(hash) !== -1 ? hash : 'home', scroll: null };
     }
 
     // Wire up every element carrying a data-page attribute (brand + nav links).
@@ -799,10 +833,15 @@
       if (el.tagName.toLowerCase() === 'a') {
         el.addEventListener('click', function (e) {
           var page = el.getAttribute('data-page');
+          var scrollTo = el.getAttribute('data-scroll');
           if (PAGES.indexOf(page) !== -1) {
             e.preventDefault();
-            window.location.hash = page === 'home' ? '' : page;
-            showPage(page);
+            if (scrollTo) {
+              window.location.hash = 'projects';
+            } else {
+              window.location.hash = page === 'home' ? '' : page;
+            }
+            showPage(page, scrollTo);
             // Close the mobile menu after a selection.
             navLinksContainer.classList.remove('open');
           }
@@ -812,7 +851,8 @@
 
     // Respond to manual hash changes (back/forward buttons, direct edits).
     window.addEventListener('hashchange', function () {
-      showPage(pageFromHash());
+      var r = fromHash();
+      showPage(r.page, r.scroll);
     });
 
     // Mobile navigation toggle.
@@ -821,7 +861,8 @@
     });
 
     // On initial load, show whichever page the hash points to.
-    showPage(pageFromHash());
+    var initial = fromHash();
+    showPage(initial.page, initial.scroll);
   })();
 </script>
 
