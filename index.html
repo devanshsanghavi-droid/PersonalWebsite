@@ -590,7 +590,12 @@
             <a href="https://www.losaltosonline.com/beyond_the_classroom/los-altos-high-school-student-builds-civic-reporting-app/article_11694c94-65eb-401e-987d-403e02550b8c.html" target="_blank" rel="noopener">Town Crier article &#8599;</a>
           </p>
           <figure class="project-image">
-            <img src="images/civicpulse-rotary.png" alt="Devansh receiving a Certificate of Appreciation for CivicPulse from the Rotary Club of Mountain View, with CivicPulse shown on the screen behind." />
+            <picture>
+              <source type="image/webp" srcset="images/opt/civicpulse-rotary-400.webp 400w, images/opt/civicpulse-rotary-672.webp 672w, images/opt/civicpulse-rotary-1344.webp 1344w" sizes="(max-width: 768px) calc(100vw - 48px), 672px" />
+              <img src="images/opt/civicpulse-rotary-1344.jpg" srcset="images/opt/civicpulse-rotary-400.jpg 400w, images/opt/civicpulse-rotary-672.jpg 672w, images/opt/civicpulse-rotary-1344.jpg 1344w" sizes="(max-width: 768px) calc(100vw - 48px), 672px"
+                   width="1600" height="1200" fetchpriority="high" decoding="async"
+                   alt="Devansh receiving a Certificate of Appreciation for CivicPulse from the Rotary Club of Mountain View, with CivicPulse shown on the screen behind." />
+            </picture>
             <figcaption>Receiving a Certificate of Appreciation for CivicPulse from the Rotary Club of Mountain View.</figcaption>
           </figure>
           <p class="desc">CivicPulse is a platform where Los Altos residents can report local infrastructure problems, upvote what matters most to them, and track whether anything gets resolved. Residents drop a pin, attach a photo, and submit a report in under a minute. The app has a live map of all active reports, community upvoting so the most urgent issues surface first, push notifications, and an admin dashboard for city staff. It was covered by the Los Altos Town Crier in April 2026 and is in active use with LAMVCF and the Rotary Club. The iOS app is live on the App Store.</p>
@@ -602,7 +607,12 @@
           <h2>Multi-Output Gaussian Process Surrogate Model for NTD Drug Discovery</h2>
           <p class="project-byline">Co-authored with Caleb Suh. Science fair project, in progress.</p>
           <figure class="project-image">
-            <img src="images/mogp-benchmark.png" alt="Two line charts comparing MOGP against GP-MOBO, Random Search, Single-Objective BO, and a Greedy Filter across a multi-seed benchmark. The left panel plots hypervolume against the number of molecules evaluated, with MOGP reaching about 0.35 while the next best baseline reaches about 0.19. The right panel plots Pareto-front size against molecules evaluated, with MOGP finishing highest at about 50." />
+            <picture>
+              <source type="image/webp" srcset="images/opt/mogp-benchmark-672.webp 672w, images/opt/mogp-benchmark-1344.webp 1344w" sizes="(max-width: 768px) calc(100vw - 48px), 672px" />
+              <img src="images/opt/mogp-benchmark-1344.png" srcset="images/opt/mogp-benchmark-672.png 672w, images/opt/mogp-benchmark-1344.png 1344w" sizes="(max-width: 768px) calc(100vw - 48px), 672px"
+                   width="2145" height="880" loading="lazy" decoding="async"
+                   alt="Two line charts comparing MOGP against GP-MOBO, Random Search, Single-Objective BO, and a Greedy Filter across a multi-seed benchmark. The left panel plots hypervolume against the number of molecules evaluated, with MOGP reaching about 0.35 while the next best baseline reaches about 0.19. The right panel plots Pareto-front size against molecules evaluated, with MOGP finishing highest at about 50." />
+            </picture>
             <figcaption>Hypervolume and Pareto-front size against molecules evaluated, MOGP compared with four baselines.</figcaption>
           </figure>
           <p class="desc">Drug discovery for neglected tropical diseases is underfunded and computationally expensive. Screening a billion compounds on a single processor core would take 475 years. Caleb and I are building a surrogate modeling pipeline that uses a Multi-Output Gaussian Process trained on molecular fingerprints to predict ADMET properties, meaning Absorption, Distribution, Metabolism, Excretion, and Toxicity, from a molecule's SMILES string alone. Rather than collapsing drug-likeness into a single score, the model treats human safety, absorption, and synthesizability as conflicting objectives on a Pareto front, and uses Expected Hypervolume Improvement to choose the next molecule to evaluate. The goal is to let underfunded NTD researchers skip expensive wet lab screening and go straight to a ranked list of promising candidates. We are validating the approach by simulating rediscovery of a known drug at a fraction of the documented cost and time.</p>
@@ -618,11 +628,21 @@
           </p>
           <div class="project-images">
             <figure class="project-image">
-              <img src="images/carta-home.png" alt="Carta's home screen, listing benefits notices as countdown cards. A red card reads 2 days left for a CalFresh renewal, an amber card reads 11 days left for benefits stopping, and a green card below shows 46." />
+              <picture>
+                <source type="image/webp" srcset="images/opt/carta-home-200.webp 200w, images/opt/carta-home-400.webp 400w" sizes="(max-width: 640px) 45vw, 200px" />
+                <img src="images/opt/carta-home-400.png" srcset="images/opt/carta-home-200.png 200w, images/opt/carta-home-400.png 400w" sizes="(max-width: 640px) 45vw, 200px"
+                     width="1206" height="2622" loading="lazy" decoding="async"
+                     alt="Carta's home screen, listing benefits notices as countdown cards. A red card reads 2 days left for a CalFresh renewal, an amber card reads 11 days left for benefits stopping, and a green card below shows 46." />
+              </picture>
               <figcaption>Every notice becomes a countdown, colored by how little time is left.</figcaption>
             </figure>
             <figure class="project-image">
-              <img src="images/carta-explanation.png" alt="Carta's plain words screen, showing an explanation of a CalFresh letter generated on the phone. A notice above it reads that Carta wrote this on this phone from the words in the photo, that it can be wrong, and that the original is below." />
+              <picture>
+                <source type="image/webp" srcset="images/opt/carta-explanation-200.webp 200w, images/opt/carta-explanation-400.webp 400w" sizes="(max-width: 640px) 45vw, 200px" />
+                <img src="images/opt/carta-explanation-400.png" srcset="images/opt/carta-explanation-200.png 200w, images/opt/carta-explanation-400.png 400w" sizes="(max-width: 640px) 45vw, 200px"
+                     width="1206" height="2622" loading="lazy" decoding="async"
+                     alt="Carta's plain words screen, showing an explanation of a CalFresh letter generated on the phone. A notice above it reads that Carta wrote this on this phone from the words in the photo, that it can be wrong, and that the original is below." />
+              </picture>
               <figcaption>The on-device model's rewrite, labeled as machine written with the original letter kept below.</figcaption>
             </figure>
           </div>
@@ -657,7 +677,12 @@
             <a href="https://github.com/devanshsanghavi-droid/MathKangarooWebsite" target="_blank" rel="noopener">GitHub repository &#8599;</a>
           </p>
           <figure class="project-image">
-            <img src="images/math-kangaroo-mentoring.png" alt="Devansh leaning over a table of younger students working through Math Kangaroo practice problems, with worksheets and pencils spread across the desks." />
+            <picture>
+              <source type="image/webp" srcset="images/opt/math-kangaroo-mentoring-400.webp 400w, images/opt/math-kangaroo-mentoring-672.webp 672w, images/opt/math-kangaroo-mentoring-1344.webp 1344w" sizes="(max-width: 768px) calc(100vw - 48px), 672px" />
+              <img src="images/opt/math-kangaroo-mentoring-1344.jpg" srcset="images/opt/math-kangaroo-mentoring-400.jpg 400w, images/opt/math-kangaroo-mentoring-672.jpg 672w, images/opt/math-kangaroo-mentoring-1344.jpg 1344w" sizes="(max-width: 768px) calc(100vw - 48px), 672px"
+                   width="1600" height="1200" loading="lazy" decoding="async"
+                   alt="Devansh leaning over a table of younger students working through Math Kangaroo practice problems, with worksheets and pencils spread across the desks." />
+            </picture>
             <figcaption>Working through practice problems with students, the in-person program Kangaroo Atlas is built to serve.</figcaption>
           </figure>
           <p class="desc">Past papers tell a student the score, not which skill failed. I run a Math Kangaroo prep program for about 60 students a year. Most of that work is in person at the schools, sitting at a table with a group of kids and working a problem through out loud, and that room is where the program actually lives. We fix the problem a student missed, and the misconception underneath it survives to the next paper. Kangaroo Atlas is what I built instead. Every one of the 600 wrong answer choices stores the specific misconception that produces it, a rule the build enforces, so a score becomes a diagnosis rather than a number. Behind it sits a prerequisite graph over 91 named skills in 7 strands joined by 106 edges, so a miss on the adaptive diagnostic walks down to the skill underneath. I wrote all 150 problems myself, so no official Math Kangaroo question is ever reproduced, and each one carries a three step hint ladder and, where it needs one, a hand-drawn figure from a set of 25. Every one is hand written rather than generated or adapted, and each took a long sitting to analyze, because a problem is only worth including once it tests the skill it claims to test instead of rewarding a trick the student happens to have seen. Timed 75 minute mocks, per skill ladders, and printable worksheets whose answer key carries those explanations all run signed out, with no ads or trackers. It builds to 869 static pages behind 2,138 tests and 102 accessibility assertions, every one of them build-blocking. The goal is a free version of my program that another tutor can self host.</p>
@@ -720,7 +745,12 @@
             <p>Built Kangaroo Atlas, the free and open source platform behind the program, around 150 hand written problems and a prerequisite graph over 91 named skills.</p>
             <p>AMC 10 competitor.</p>
             <figure class="project-image" style="margin-top: 16px;">
-              <img src="images/math-kangaroo-mentoring.png" alt="Devansh helping a group of younger students work through Math Kangaroo practice problems at a classroom table." />
+              <picture>
+                <source type="image/webp" srcset="images/opt/math-kangaroo-mentoring-400.webp 400w, images/opt/math-kangaroo-mentoring-672.webp 672w, images/opt/math-kangaroo-mentoring-1344.webp 1344w" sizes="(max-width: 640px) calc(100vw - 48px), 312px" />
+                <img src="images/opt/math-kangaroo-mentoring-1344.jpg" srcset="images/opt/math-kangaroo-mentoring-400.jpg 400w, images/opt/math-kangaroo-mentoring-672.jpg 672w, images/opt/math-kangaroo-mentoring-1344.jpg 1344w" sizes="(max-width: 640px) calc(100vw - 48px), 312px"
+                     width="1600" height="1200" loading="lazy" decoding="async"
+                     alt="Devansh helping a group of younger students work through Math Kangaroo practice problems at a classroom table." />
+              </picture>
               <figcaption>Working through Math Kangaroo practice problems with students.</figcaption>
             </figure>
           </div>
