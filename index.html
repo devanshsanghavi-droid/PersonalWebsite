@@ -597,8 +597,6 @@
         <article class="project">
           <h2><a href="https://civicpulse.pro/" target="_blank" rel="noopener">CivicPulse</a></h2>
           <p class="project-meta">
-            <a href="https://civicpulse.pro/" target="_blank" rel="noopener">civicpulse.pro &#8599;</a>
-            <span class="sep">&middot;</span>
             <a href="https://apps.apple.com/us/app/civic-pulse/id6760249208" target="_blank" rel="noopener">App Store &#8599;</a>
             <span class="sep">&middot;</span>
             <a href="https://www.losaltosonline.com/beyond_the_classroom/los-altos-high-school-student-builds-civic-reporting-app/article_11694c94-65eb-401e-987d-403e02550b8c.html" target="_blank" rel="noopener">Town Crier article &#8599;</a>
@@ -620,6 +618,9 @@
         <article class="project">
           <h2>Multi-Output Gaussian Process Surrogate Model for NTD Drug Discovery</h2>
           <p class="project-byline">Co-authored with Caleb Suh. Science fair project, in progress.</p>
+          <p class="project-meta">
+            <a href="https://docs.google.com/document/d/1pFS1FnaJ6Jw0lTz1hSyls6TYdCh59QV1VHt6lvtOqkU/edit?tab=t.ue21rxx75dsw" target="_blank" rel="noopener">Project write-up &#8599;</a>
+          </p>
           <figure class="project-image">
             <picture>
               <source type="image/webp" srcset="images/opt/mogp-benchmark-672.webp 672w, images/opt/mogp-benchmark-1344.webp 1344w" sizes="(max-width: 768px) calc(100vw - 48px), 672px" />
@@ -806,83 +807,77 @@
 
         <!-- ---------------- SKILLS ---------------- -->
         <h2 class="subsection-heading">Skills</h2>
-        <p class="page-lead" style="margin-top: 0;">What the projects above actually required. Everything here is something I have shipped, tested, or measured, not something I have only read about.</p>
+        <p class="page-lead" style="margin-top: 0;">What the projects above actually required, in plain terms. Each point is something I have shipped, tested, or measured.</p>
 
         <div class="highlights-grid">
 
           <div class="hl-group">
             <div class="hl-label">Building and shipping apps</div>
-            <p>End to end, from a blank repo to a listing on the App Store. React Native and Expo on iOS and Android, native modules for camera, location, notifications, secure storage, and SQLite, navigation with Expo Router and React Navigation, state in Zustand, maps with marker clustering, Firebase for auth and data, Google Sign-In, dev-client builds on physical devices, provisioning profiles and entitlements, and getting through App Store review.</p>
-          </div>
-
-          <div class="hl-group">
-            <div class="hl-label">Web</div>
-            <p>Next.js App Router with React and strict TypeScript, Tailwind, static generation into hundreds of pages, a PWA with a hand written service worker and an offline queue, deployment on Cloudflare Pages and Workers, and plain HTML, CSS, and JavaScript when a framework would be overkill, this site included. Responsive images, social cards, favicons, sitemaps, and the rest of the plumbing a real site needs.</p>
+            <p>Taking an app from a blank repo to a live App Store listing, including getting through Apple's review. CivicPulse is there now.</p>
+            <p>iPhone and Android apps in React Native and Expo, with the camera, location, notifications, and secure storage that real apps depend on.</p>
+            <p>Websites in Next.js and in plain HTML, deployed on Cloudflare and built so they stay fast on a phone.</p>
+            <p>Building for everyone: screen reader support, large touch targets, and Spanish alongside English, each checked by a test rather than assumed.</p>
           </div>
 
           <div class="hl-group">
             <div class="hl-label">On-device machine learning</div>
-            <p>Running a quantized language model on a phone with no server: GGUF models through llama.rn, 4-bit quantization to fit in memory, the iOS entitlements that let an app hold it, grammar constrained decoding with GBNF, and on-device OCR through Apple Vision. Measuring time to first token and tokens per second on real hardware, and deciding what a model must be prevented from saying rather than hoping it will not.</p>
+            <p>Running a language model on the phone itself so a user's documents never leave it. That meant shrinking a 1.5 billion parameter model to 1.1 GB and asking iOS for the extra memory to hold it.</p>
+            <p>Reading printed letters with on-device text recognition and turning the raw text into structured fields and deadlines.</p>
+            <p>Constraining what the model is allowed to say with a grammar, so it cannot invent a date the user never confirmed.</p>
+            <p>Measuring speed on real hardware, 1.3 seconds to the first token and 37 tokens per second on an iPhone, instead of assuming.</p>
           </div>
 
           <div class="hl-group">
             <div class="hl-label">Surrogate modeling and Bayesian optimization</div>
-            <p>Gaussian processes in GPyTorch, including multi-output and coregionalized models, Tanimoto kernels over molecular fingerprints, and BoTorch acquisition functions such as EHVI, qNEHVI, and qLogEHVI. Treating competing objectives as a Pareto front and choosing the next evaluation by expected hypervolume improvement. Benchmarking against random search, single objective BO, greedy filters, and reference implementations across many seeds, with a strict split between in-sample and held-out.</p>
+            <p>A surrogate model is a cheap statistical stand-in for an expensive experiment. I build them so a lab can predict which molecules are worth testing before spending time on the bench.</p>
+            <p>Gaussian processes that predict several properties at once and report how unsure they are, which is what lets the next experiment be chosen well.</p>
+            <p>Treating safety, absorption, and ease of synthesis as competing goals on a Pareto front, instead of collapsing them into one score that hides the tradeoff.</p>
+            <p>The chemistry underneath: molecular fingerprints, SMILES strings, ADMET properties, and docking simulations that check the model against known drugs.</p>
           </div>
 
           <div class="hl-group">
-            <div class="hl-label">Computational chemistry</div>
-            <p>RDKit for SMILES parsing and fingerprints, ADMET property prediction, PyTDC and ChEMBL as data sources, synthetic accessibility scoring, and AutoDock Vina docking with validation against known actives. Enough medicinal chemistry to know that absorption, safety, and synthesizability pull against each other and that a single drug-likeness score hides that.</p>
-          </div>
-
-          <div class="hl-group">
-            <div class="hl-label">AI evaluation research</div>
-            <p>Surveying the landscape of benchmarks, arenas, and RL environments, working out what each one actually measures, how it collects human or verifiable judgement, and why some become standards while most are forgotten. Prompting regimes from zero-shot through chain of thought and in-context learning. Reading papers critically, running a literature review, and writing up findings for people who were not in the room.</p>
+            <div class="hl-label">Research and measurement</div>
+            <p>Surveying how AI models are evaluated: what each benchmark actually tests, how it gathers judgement, and why most never catch on.</p>
+            <p>Designing an honest test. For Carta that meant photographing printed notices in nine physical conditions rather than using clean sample text, and holding some back so the result could not be tuned to the test.</p>
+            <p>Reporting precision and recall the way a skeptic would read them, and refusing to print a percentage when the sample is too small to mean anything.</p>
+            <p>Running experiments across many random seeds and showing the spread, not just the best run.</p>
           </div>
 
           <div class="hl-group">
             <div class="hl-label">Agentic coding</div>
-            <p>Directing AI coding agents across multi-month projects rather than one-off prompts. Writing project briefs that run to hundreds of lines, with guardrails, settled results, and ruled-out approaches, so a fresh session cannot regress or re-derive what is already known. Keeping dated decision logs that record retractions as carefully as wins. Reviewing generated code against the spec, catching where it overclaims, and grounding technical choices in research rather than in whatever the model remembers.</p>
+            <p>Directing AI coding agents across months-long projects rather than one-off prompts. Every project carries a written brief, some over 800 lines, that a fresh session reads before touching code.</p>
+            <p>Writing down what is settled, what was tried and ruled out, and what was retracted, so an agent cannot quietly re-derive a wrong result.</p>
+            <p>Reviewing generated code against the spec and catching where it overclaims. That review is where most of the real work is.</p>
+            <p>Grounding technical choices in published research rather than in whatever the model happens to remember.</p>
           </div>
 
           <div class="hl-group">
-            <div class="hl-label">Testing and continuous integration</div>
-            <p>Jest, Vitest, React Testing Library, pytest, and pgTAP for Postgres. Adversarial tests that poison the network layer and replay a real corpus to prove data cannot leave the device. Content guardrails shipped with a fixture that must fail and one that must pass. Custom lint rules, axe-core accessibility assertions, computed contrast ratios, and GitHub Actions pipelines where every step is build-blocking.</p>
+            <div class="hl-label">Testing and quality</div>
+            <p>Test suites in the hundreds and thousands, 591 for Carta and over 2,100 for Kangaroo Atlas, every one a gate the build cannot pass without.</p>
+            <p>Adversarial tests that try to break a guarantee, such as sabotaging every network path and replaying real data to prove nothing leaks.</p>
+            <p>Accessibility checked by machine on every build, including computed color contrast, not audited once and forgotten.</p>
+            <p>Continuous integration where typecheck, lint, tests, content validation, and accessibility all block a merge.</p>
           </div>
 
           <div class="hl-group">
-            <div class="hl-label">Security and privacy engineering</div>
-            <p>AES-256-GCM field-level encryption with keys in hardware-backed storage, salted hashing for identifiers, redacting Social Security numbers in every format they appear before the first write, and a no-network guarantee enforced by a test rather than a promise. Row-level security in Postgres, no third-party trackers, and designing for users who are minors or who are one missed letter away from losing their benefits.</p>
+            <div class="hl-label">Security and privacy</div>
+            <p>Encrypting sensitive fields with AES-256-GCM and keeping the key in the phone's hardware-backed store.</p>
+            <p>Stripping Social Security numbers in every format they appear before anything is written to disk.</p>
+            <p>Designing for users who are minors, or who could lose their benefits from one missed letter: no trackers, no accounts required, nothing that phones home.</p>
+            <p>Database rules that make it impossible for one user to read another's data, tested against a real Postgres.</p>
           </div>
 
           <div class="hl-group">
-            <div class="hl-label">Accessibility and internationalization</div>
-            <p>WCAG 2.1 AA as a build gate, screen reader labels, roles, and hints, 44 point touch targets, respecting the user's font scaling, and indicators that survive greyscale printing and colorblindness. Internationalization with i18next, English and Spanish kept in parity by a test that fails on drift, and sourcing wording from the agency's own published translations where they exist.</p>
-          </div>
-
-          <div class="hl-group">
-            <div class="hl-label">Data modeling and content systems</div>
-            <p>Prerequisite graphs verified acyclic in CI, skill taxonomies, modeling the specific misconception behind each wrong answer, and FSRS spaced repetition. Zod-validated JSON and MDX with Git as the CMS, Supabase and Postgres schemas, SQLite as a cache, and metrics harnesses that write results a later run can trust.</p>
-          </div>
-
-          <div class="hl-group">
-            <div class="hl-label">Measurement and experiment design</div>
-            <p>Building an evaluation corpus by hand, photographing printed notices across nine physical conditions rather than testing on clean synthetic text. Precision and recall on real inputs, refusing to print a percentage when the sample is too small to support one, multi-seed runs with confidence bands, Streamlit dashboards for comparing runs, and matplotlib for the figures that end up in the writeup.</p>
-          </div>
-
-          <div class="hl-group">
-            <div class="hl-label">Hardware and robotics</div>
-            <p>VEX and FRC: inertial sensor integration so an autonomous routine holds its heading, mechanism design including a spindexer, assembly, machining, and electrical work. Digital logic and HDL chip design from MIT Beaver Works, and enough understanding of what happens below the software to explain photonic interconnect and neuron-on-silicon computing on a podcast.</p>
-          </div>
-
-          <div class="hl-group">
-            <div class="hl-label">Teaching, speaking, and leadership</div>
-            <p>Teaching about 60 students a year in person and designing the curriculum they work through. Running workshops that have taught more than 100 people to read a paper and cold email a professor. Parliamentary debate at the state level. Planning events across multiple schools for 200 or more students, raising the money for them, and producing a podcast that explains hard hardware to a general audience.</p>
+            <div class="hl-label">Teaching and leadership</div>
+            <p>Teaching about 60 students a year in person, and writing every practice problem myself rather than reusing old exams.</p>
+            <p>Running workshops that have taught more than 100 people how to read a paper and write a cold email to a professor.</p>
+            <p>Parliamentary debate at the state level, and organizing events for 200 or more students across several schools.</p>
+            <p>Explaining hard technical topics to a general audience, on a podcast and in writing.</p>
           </div>
 
           <div class="hl-group wide">
             <div class="hl-label">Languages and tools</div>
-            <p>TypeScript, JavaScript, Python, Java, SQL, HTML and CSS. React, React Native, Expo, Next.js, Tailwind, Zod, i18next, Zustand, KaTeX. PyTorch, GPyTorch, BoTorch, RDKit, pandas, NumPy, SciPy, scikit-learn, matplotlib, Streamlit. Firebase, Supabase, Postgres, SQLite, Cloudflare Pages and Workers. Jest, Vitest, pytest, pgTAP, axe-core, ESLint, Prettier, GitHub Actions. Git, Xcode, Node, pnpm, and Claude Code.</p>
+            <p>TypeScript, Python, Java, SQL. React, React Native, Expo, Next.js. PyTorch, GPyTorch, BoTorch, RDKit, scikit-learn, pandas. Firebase, Supabase, Postgres, Cloudflare. Jest, Vitest, pytest, GitHub Actions, Claude Code.</p>
           </div>
 
         </div>
