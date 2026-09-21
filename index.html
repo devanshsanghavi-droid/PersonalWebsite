@@ -807,72 +807,72 @@
 
         <!-- ---------------- SKILLS ---------------- -->
         <h2 class="subsection-heading">Skills</h2>
-        <p class="page-lead" style="margin-top: 0;">What the projects above actually required, in plain terms. Each point is something I have shipped, tested, or measured.</p>
+        <p class="page-lead" style="margin-top: 0;">Each with the project it was used on.</p>
 
         <div class="highlights-grid">
 
           <div class="hl-group">
             <div class="hl-label">Building and shipping apps</div>
-            <p>Taking an app from a blank repo to a live App Store listing, including getting through Apple's review. CivicPulse is there now.</p>
-            <p>iPhone and Android apps in React Native and Expo, with the camera, location, notifications, and secure storage that real apps depend on.</p>
-            <p>Websites in Next.js and in plain HTML, deployed on Cloudflare and built so they stay fast on a phone.</p>
-            <p>Building for everyone: screen reader support, large touch targets, and Spanish alongside English, each checked by a test rather than assumed.</p>
+            <p>Full-stack mobile app development, shipped to the App Store (<a href="https://apps.apple.com/us/app/civic-pulse/id6760249208" target="_blank" rel="noopener">CivicPulse</a>)</p>
+            <p>Cross-platform iOS and Android with React Native and Expo (<a href="https://apps.apple.com/us/app/civic-pulse/id6760249208" target="_blank" rel="noopener">CivicPulse</a>, <a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>)</p>
+            <p>Web development with Next.js and static site generation, deployed on Cloudflare (<a href="https://github.com/devanshsanghavi-droid/MathKangarooWebsite" target="_blank" rel="noopener">Kangaroo Atlas</a>, this site)</p>
+            <p>Accessibility and internationalization, WCAG 2.1 AA and English with Spanish (<a href="https://github.com/devanshsanghavi-droid/MathKangarooWebsite" target="_blank" rel="noopener">Kangaroo Atlas</a>, <a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>)</p>
           </div>
 
           <div class="hl-group">
             <div class="hl-label">On-device machine learning</div>
-            <p>Running a language model on the phone itself so a user's documents never leave it. That meant shrinking a 1.5 billion parameter model to 1.1 GB and asking iOS for the extra memory to hold it.</p>
-            <p>Reading printed letters with on-device text recognition and turning the raw text into structured fields and deadlines.</p>
-            <p>Constraining what the model is allowed to say with a grammar, so it cannot invent a date the user never confirmed.</p>
-            <p>Measuring speed on real hardware, 1.3 seconds to the first token and 37 tokens per second on an iPhone, instead of assuming.</p>
+            <p>Local LLM inference on iOS with quantized GGUF models (<a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>)</p>
+            <p>On-device OCR and structured field extraction (<a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>)</p>
+            <p>Grammar-constrained decoding to block hallucinated fields (<a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>)</p>
+            <p>Hardware benchmarking of latency and throughput (<a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>)</p>
           </div>
 
           <div class="hl-group">
             <div class="hl-label">Surrogate modeling and Bayesian optimization</div>
-            <p>A surrogate model is a cheap statistical stand-in for an expensive experiment. I build them so a lab can predict which molecules are worth testing before spending time on the bench.</p>
-            <p>Gaussian processes that predict several properties at once and report how unsure they are, which is what lets the next experiment be chosen well.</p>
-            <p>Treating safety, absorption, and ease of synthesis as competing goals on a Pareto front, instead of collapsing them into one score that hides the tradeoff.</p>
-            <p>The chemistry underneath: molecular fingerprints, SMILES strings, ADMET properties, and docking simulations that check the model against known drugs.</p>
+            <p>Multi-output Gaussian process surrogate models (<a href="https://docs.google.com/document/d/1pFS1FnaJ6Jw0lTz1hSyls6TYdCh59QV1VHt6lvtOqkU/edit?tab=t.ue21rxx75dsw" target="_blank" rel="noopener">MOGP</a>)</p>
+            <p>Multi-objective Bayesian optimization with Pareto fronts and expected hypervolume improvement (<a href="https://docs.google.com/document/d/1pFS1FnaJ6Jw0lTz1hSyls6TYdCh59QV1VHt6lvtOqkU/edit?tab=t.ue21rxx75dsw" target="_blank" rel="noopener">MOGP</a>)</p>
+            <p>Cheminformatics: molecular fingerprints, ADMET prediction, and docking validation (<a href="https://docs.google.com/document/d/1pFS1FnaJ6Jw0lTz1hSyls6TYdCh59QV1VHt6lvtOqkU/edit?tab=t.ue21rxx75dsw" target="_blank" rel="noopener">MOGP</a>)</p>
+            <p>Benchmarking against baselines across seeds with held-out evaluation (<a href="https://docs.google.com/document/d/1pFS1FnaJ6Jw0lTz1hSyls6TYdCh59QV1VHt6lvtOqkU/edit?tab=t.ue21rxx75dsw" target="_blank" rel="noopener">MOGP</a>)</p>
           </div>
 
           <div class="hl-group">
             <div class="hl-label">Research and measurement</div>
-            <p>Surveying how AI models are evaluated: what each benchmark actually tests, how it gathers judgement, and why most never catch on.</p>
-            <p>Designing an honest test. For Carta that meant photographing printed notices in nine physical conditions rather than using clean sample text, and holding some back so the result could not be tuned to the test.</p>
-            <p>Reporting precision and recall the way a skeptic would read them, and refusing to print a percentage when the sample is too small to mean anything.</p>
-            <p>Running experiments across many random seeds and showing the spread, not just the best run.</p>
+            <p>AI evaluation research across benchmarks, arenas, and RL environments (Paper Lantern)</p>
+            <p>Evaluation corpus design with real-world inputs and held-out sets (<a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>)</p>
+            <p>Precision and recall reporting with minimum sample thresholds (<a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>)</p>
+            <p>Multi-seed experiments with confidence intervals (<a href="https://docs.google.com/document/d/1pFS1FnaJ6Jw0lTz1hSyls6TYdCh59QV1VHt6lvtOqkU/edit?tab=t.ue21rxx75dsw" target="_blank" rel="noopener">MOGP</a>)</p>
           </div>
 
           <div class="hl-group">
             <div class="hl-label">Agentic coding</div>
-            <p>Directing AI coding agents across months-long projects rather than one-off prompts. Every project carries a written brief, some over 800 lines, that a fresh session reads before touching code.</p>
-            <p>Writing down what is settled, what was tried and ruled out, and what was retracted, so an agent cannot quietly re-derive a wrong result.</p>
-            <p>Reviewing generated code against the spec and catching where it overclaims. That review is where most of the real work is.</p>
-            <p>Grounding technical choices in published research rather than in whatever the model happens to remember.</p>
+            <p>Directing AI coding agents across multi-month projects (<a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>, <a href="https://github.com/devanshsanghavi-droid/MathKangarooWebsite" target="_blank" rel="noopener">Kangaroo Atlas</a>, <a href="https://docs.google.com/document/d/1pFS1FnaJ6Jw0lTz1hSyls6TYdCh59QV1VHt6lvtOqkU/edit?tab=t.ue21rxx75dsw" target="_blank" rel="noopener">MOGP</a>)</p>
+            <p>Project briefs with guardrails, settled results, and ruled-out approaches (all projects)</p>
+            <p>Reviewing generated code against spec and catching overclaims (all projects)</p>
+            <p>Research-grounded technical decision making (Paper Lantern)</p>
           </div>
 
           <div class="hl-group">
             <div class="hl-label">Testing and quality</div>
-            <p>Test suites in the hundreds and thousands, 591 for Carta and over 2,100 for Kangaroo Atlas, every one a gate the build cannot pass without.</p>
-            <p>Adversarial tests that try to break a guarantee, such as sabotaging every network path and replaying real data to prove nothing leaks.</p>
-            <p>Accessibility checked by machine on every build, including computed color contrast, not audited once and forgotten.</p>
-            <p>Continuous integration where typecheck, lint, tests, content validation, and accessibility all block a merge.</p>
+            <p>Large test suites as build gates, 591 and 2,100+ tests (<a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>, <a href="https://github.com/devanshsanghavi-droid/MathKangarooWebsite" target="_blank" rel="noopener">Kangaroo Atlas</a>)</p>
+            <p>Adversarial testing, including network isolation proofs (<a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>)</p>
+            <p>Automated accessibility and contrast testing in CI (<a href="https://github.com/devanshsanghavi-droid/MathKangarooWebsite" target="_blank" rel="noopener">Kangaroo Atlas</a>)</p>
+            <p>Continuous integration with typecheck, lint, test, and content validation gates (<a href="https://github.com/devanshsanghavi-droid/MathKangarooWebsite" target="_blank" rel="noopener">Kangaroo Atlas</a>)</p>
           </div>
 
           <div class="hl-group">
             <div class="hl-label">Security and privacy</div>
-            <p>Encrypting sensitive fields with AES-256-GCM and keeping the key in the phone's hardware-backed store.</p>
-            <p>Stripping Social Security numbers in every format they appear before anything is written to disk.</p>
-            <p>Designing for users who are minors, or who could lose their benefits from one missed letter: no trackers, no accounts required, nothing that phones home.</p>
-            <p>Database rules that make it impossible for one user to read another's data, tested against a real Postgres.</p>
+            <p>Field-level AES-256-GCM encryption with hardware-backed keys (<a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>)</p>
+            <p>PII redaction before persistence (<a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>)</p>
+            <p>Privacy-by-design for minors and vulnerable users, no trackers or accounts (<a href="https://github.com/devanshsanghavi-droid/MathKangarooWebsite" target="_blank" rel="noopener">Kangaroo Atlas</a>, <a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>)</p>
+            <p>Postgres row-level security with pgTAP tests (<a href="https://github.com/devanshsanghavi-droid/MathKangarooWebsite" target="_blank" rel="noopener">Kangaroo Atlas</a>)</p>
           </div>
 
           <div class="hl-group">
             <div class="hl-label">Teaching and leadership</div>
-            <p>Teaching about 60 students a year in person, and writing every practice problem myself rather than reusing old exams.</p>
-            <p>Running workshops that have taught more than 100 people how to read a paper and write a cold email to a professor.</p>
-            <p>Parliamentary debate at the state level, and organizing events for 200 or more students across several schools.</p>
-            <p>Explaining hard technical topics to a general audience, on a podcast and in writing.</p>
+            <p>In-person tutoring of about 60 students a year with original curriculum (Math Kangaroo prep)</p>
+            <p>Workshop facilitation for 100+ students (<a href="https://www.instagram.com/stemresearchclub_lahs/" target="_blank" rel="noopener">STEM Research Club</a>)</p>
+            <p>Parliamentary debate at state level and event organizing for 200+ across schools (Speech and Debate)</p>
+            <p>Technical communication for general audiences (<a href="https://www.youtube.com/@voltagedroppodcast" target="_blank" rel="noopener">Voltage Drop</a>)</p>
           </div>
 
           <div class="hl-group wide">
