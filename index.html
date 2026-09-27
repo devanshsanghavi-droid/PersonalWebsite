@@ -665,7 +665,29 @@
           <p class="stack">React Native, Expo, TypeScript, Apple Vision OCR, llama.rn, Qwen2.5-1.5B, Jest, iOS</p>
         </article>
 
-        <!-- Project 4: Paper Lantern internship -->
+        <!-- Project 4: ResidualMap -->
+        <article class="project">
+          <h2>ResidualMap</h2>
+          <p class="project-byline">Conrad Challenge 2026-27, Water Challenge. Tested in simulation, real-utility pilot next.</p>
+          <p class="project-meta">
+            <a href="https://github.com/devanshsanghavi-droid/ConradChallenge" target="_blank" rel="noopener">GitHub repository &#8599;</a>
+          </p>
+          <figure class="project-image">
+            <a href="images/residualmap-day-night.png" target="_blank" rel="noopener">
+              <picture>
+                <source type="image/webp" srcset="images/opt/residualmap-day-night-672.webp 672w, images/opt/residualmap-day-night-1344.webp 1344w" sizes="(max-width: 768px) calc(100vw - 48px), 672px" />
+                <img src="images/opt/residualmap-day-night-1344.png" srcset="images/opt/residualmap-day-night-672.png 672w, images/opt/residualmap-day-night-1344.png 1344w" sizes="(max-width: 768px) calc(100vw - 48px), 672px"
+                     width="3120" height="806" loading="lazy" decoding="async"
+                     alt="Four maps of a simulated 92 junction water network. The first shows true chlorine at 10 pm, hidden from the model. The second shows the chlorine ResidualMap predicted for 10 pm from 15 grab samples taken between 7 am and 5 pm. The third shows the true daily minimum at each junction, with 20 junctions dropping below 0.2 mg/L at some hour. The fourth shows the predicted chance each junction dips below 0.2 mg/L, which flags every one of those unsampled junctions." />
+              </picture>
+            </a>
+            <figcaption>Fifteen daytime grab samples predicting the night. The right-hand map caught every unsampled junction whose chlorine dropped below the safe minimum. Click to enlarge.</figcaption>
+          </figure>
+          <p class="desc">About 81% of American community water systems serve fewer than 3,300 people, and most of them have no sensors or live data, just a handful of chlorine grab samples a month taken during working hours. That leaves a blind spot. Chlorine decays the longer water sits in the pipes, so it runs lowest at night and at dead ends, exactly where and when nobody samples. In one simulated network, 40% of junctions were below the 0.2 mg/L safety minimum at midnight, while averaging the daytime samples flagged none. ResidualMap combines those grab samples with the EPANET pipe model the utility already has. It runs the town's own model 675 times with different guesses for how fast chlorine decays in that water and those pipes, weights each run by how well it explains the real samples, then uses a Gaussian process to correct what the simulations still get wrong. The result is a chlorine map of every junction at every hour with an honest 90% error band, the chance each one dips below 0.2 mg/L, and next month's sampling route. In simulation, three daytime samples find 94% of the junctions whose daily low falls below the minimum and eight find 99%, and the result held when the true network had a tank half the size the model assumed and a pipe closed that the model thought was open. It runs on a laptop with no sensors or internet connection. Every result so far comes from simulation, and a pilot with a real utility is the next step.</p>
+          <p class="stack">Python, WNTR, EPANET 2.2, scikit-learn Gaussian processes, NumPy, SciPy, Streamlit, Matplotlib</p>
+        </article>
+
+        <!-- Project 5: Paper Lantern internship -->
         <article class="project">
           <h2>Research Intern, Paper Lantern</h2>
           <p class="project-byline">Working with a team led by current Google DeepMind executives. Aug 2026, ongoing.</p>
@@ -673,7 +695,7 @@
           <p class="stack">Benchmarks, arenas, RL environments, evaluation design, literature review</p>
         </article>
 
-        <!-- Project 5: STEM Research Club -->
+        <!-- Project 6: STEM Research Club -->
         <article class="project">
           <h2>STEM Research Club</h2>
           <p class="project-byline">Founded and run at LAHS. Since 10th grade, ongoing.</p>
@@ -684,7 +706,7 @@
           <p class="stack">Workshops, guest lectures, paper reading, cold outreach, literature review, resume preparation</p>
         </article>
 
-        <!-- Project 6: Kangaroo Atlas -->
+        <!-- Project 7: Kangaroo Atlas -->
         <article class="project">
           <h2><a href="https://kangarooatlas.com/" target="_blank" rel="noopener">Kangaroo Atlas</a></h2>
           <p class="project-byline">Live and open source.</p>
@@ -706,7 +728,7 @@
           <p class="stack">Next.js, TypeScript, Tailwind CSS, Zod, ts-fsrs, Vitest, axe-core, GitHub Actions</p>
         </article>
 
-        <!-- Project 7: Voltage Drop -->
+        <!-- Project 8: Voltage Drop -->
         <article class="project">
           <h2>Voltage Drop</h2>
           <p class="project-byline">Weekly solo explainer podcast.</p>
@@ -787,6 +809,7 @@
             <p>iOS app live on the <a href="https://apps.apple.com/us/app/civic-pulse/id6760249208" target="_blank" rel="noopener">App Store</a>. Android submitted for review.</p>
             <p>Active collaborations with LAMVCF and the Rotary Club, who gave CivicPulse a Certificate of Appreciation.</p>
             <p>Building Carta, an on-device iPhone app that reads a government benefits letter and makes sure the deadline buried inside it is not missed.</p>
+            <p>Building ResidualMap for the Conrad Challenge, which maps chlorine across a small town's water pipes from the few samples its operators already take.</p>
           </div>
 
           <!-- Column item: Speech and Debate -->
@@ -831,9 +854,10 @@
 
           <div class="hl-group">
             <div class="hl-label">Surrogate modeling and Bayesian optimization</div>
-            <p>Multi-output Gaussian process surrogate models (<a href="https://docs.google.com/document/d/1pFS1FnaJ6Jw0lTz1hSyls6TYdCh59QV1VHt6lvtOqkU/edit?tab=t.bp6v8s45i9jr#heading=h.aoea57n9ms0d" target="_blank" rel="noopener">MOGP</a>)</p>
+            <p>Multi-output Gaussian process surrogate models (<a href="https://docs.google.com/document/d/1pFS1FnaJ6Jw0lTz1hSyls6TYdCh59QV1VHt6lvtOqkU/edit?tab=t.bp6v8s45i9jr#heading=h.aoea57n9ms0d" target="_blank" rel="noopener">MOGP</a>, <a href="https://github.com/devanshsanghavi-droid/ConradChallenge" target="_blank" rel="noopener">ResidualMap</a>)</p>
             <p>Multi-objective Bayesian optimization with Pareto fronts and expected hypervolume improvement (<a href="https://docs.google.com/document/d/1pFS1FnaJ6Jw0lTz1hSyls6TYdCh59QV1VHt6lvtOqkU/edit?tab=t.bp6v8s45i9jr#heading=h.aoea57n9ms0d" target="_blank" rel="noopener">MOGP</a>)</p>
             <p>Cheminformatics: molecular fingerprints, ADMET prediction, and docking validation (<a href="https://docs.google.com/document/d/1pFS1FnaJ6Jw0lTz1hSyls6TYdCh59QV1VHt6lvtOqkU/edit?tab=t.bp6v8s45i9jr#heading=h.aoea57n9ms0d" target="_blank" rel="noopener">MOGP</a>)</p>
+            <p>Calibrating a physics simulator against sparse field measurements (<a href="https://github.com/devanshsanghavi-droid/ConradChallenge" target="_blank" rel="noopener">ResidualMap</a>)</p>
             <p>Benchmarking against baselines across seeds with held-out evaluation (<a href="https://docs.google.com/document/d/1pFS1FnaJ6Jw0lTz1hSyls6TYdCh59QV1VHt6lvtOqkU/edit?tab=t.bp6v8s45i9jr#heading=h.aoea57n9ms0d" target="_blank" rel="noopener">MOGP</a>)</p>
           </div>
 
@@ -842,7 +866,7 @@
             <p>AI evaluation research across benchmarks, arenas, and RL environments (Paper Lantern)</p>
             <p>Evaluation corpus design with real-world inputs and held-out sets (<a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>)</p>
             <p>Precision and recall reporting with minimum sample thresholds (<a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>)</p>
-            <p>Multi-seed experiments with confidence intervals (<a href="https://docs.google.com/document/d/1pFS1FnaJ6Jw0lTz1hSyls6TYdCh59QV1VHt6lvtOqkU/edit?tab=t.bp6v8s45i9jr#heading=h.aoea57n9ms0d" target="_blank" rel="noopener">MOGP</a>)</p>
+            <p>Multi-seed experiments with confidence intervals (<a href="https://docs.google.com/document/d/1pFS1FnaJ6Jw0lTz1hSyls6TYdCh59QV1VHt6lvtOqkU/edit?tab=t.bp6v8s45i9jr#heading=h.aoea57n9ms0d" target="_blank" rel="noopener">MOGP</a>, <a href="https://github.com/devanshsanghavi-droid/ConradChallenge" target="_blank" rel="noopener">ResidualMap</a>)</p>
           </div>
 
           <div class="hl-group">

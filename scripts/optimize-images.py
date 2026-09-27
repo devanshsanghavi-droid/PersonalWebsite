@@ -22,6 +22,7 @@ SOURCES = {
     "mogp-benchmark.png":          dict(widths=(672, 1344),      photo=False),
     "carta-home.png":              dict(widths=(200, 400),       photo=False),
     "carta-explanation.png":       dict(widths=(200, 400),       photo=False),
+    "residualmap-day-night.png":   dict(widths=(672, 1344),      photo=False),
 }
 
 def main():
