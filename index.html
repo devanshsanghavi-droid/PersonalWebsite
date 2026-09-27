@@ -335,6 +335,22 @@
     margin-top: 8px;
   }
 
+  /* Hand-drawn inline SVG diagrams. On a narrow screen the diagram keeps a
+     readable size and scrolls inside its own box instead of shrinking. */
+  .diagram {
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+    background: #fff;
+    padding: 14px 10px 8px;
+  }
+
+  .diagram svg {
+    display: block;
+    width: 100%;
+    min-width: 560px;
+    height: auto;
+  }
+
   /* A row of screenshots. Phone captures sit side by side rather than stacked. */
   .project-images {
     display: flex;
@@ -687,7 +703,57 @@
           <p class="stack">Python, WNTR, EPANET 2.2, scikit-learn Gaussian processes, NumPy, SciPy, Streamlit, Matplotlib</p>
         </article>
 
-        <!-- Project 5: Paper Lantern internship -->
+        <!-- Project 5: Blocked on Paper -->
+        <article class="project">
+          <h2>Blocked on Paper: measuring how online consent gets lost</h2>
+          <p class="project-byline">Independent research with an adult mentor, 2026, ongoing. Main measurement complete, paper in preparation for peer review. The paper, code, and tool will be linked here after the companies involved have been notified.</p>
+          <figure class="project-image">
+            <div class="diagram">
+              <svg viewBox="0 0 672 236" role="img" aria-labelledby="bop-t bop-d" font-family="Inter, system-ui, -apple-system, sans-serif">
+                <title id="bop-t">Where consent gets lost</title>
+                <desc id="bop-d">A store page contains ordinary page scripts and a Shopify sandbox holding an advertising pixel. The cookie banner blocks the page script, so it never reaches the ad companies. The banner cannot see inside the sandbox, so the ad pixel sends data to the ad companies anyway.</desc>
+                <defs>
+                  <marker id="bop-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#111111"/></marker>
+                  <marker id="bop-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#B42318"/></marker>
+                </defs>
+
+                <!-- the visitor's browser -->
+                <text x="16" y="16" font-size="10.5" font-weight="600" fill="#6B7280" letter-spacing="0.06em">STORE PAGE IN THE VISITOR'S BROWSER</text>
+                <rect x="16" y="26" width="208" height="200" rx="10" fill="#FAFAF8" stroke="#D9D9D6"/>
+                <rect x="36" y="52" width="168" height="42" rx="6" fill="#fff" stroke="#111111"/>
+                <text x="120" y="78" font-size="13" text-anchor="middle" fill="#111111">Page script</text>
+                <rect x="30" y="124" width="180" height="90" rx="8" fill="#EEF3FA" stroke="#2E5FA6" stroke-dasharray="5 4"/>
+                <text x="120" y="142" font-size="10.5" font-weight="600" text-anchor="middle" fill="#2E5FA6" letter-spacing="0.04em">SHOPIFY SANDBOX</text>
+                <rect x="46" y="154" width="148" height="42" rx="6" fill="#fff" stroke="#111111"/>
+                <text x="120" y="180" font-size="13" text-anchor="middle" fill="#111111">Ad pixel</text>
+
+                <!-- the banner, which only reaches the page -->
+                <rect x="284" y="44" width="140" height="58" rx="6" fill="#fff" stroke="#111111"/>
+                <text x="354" y="68" font-size="13" font-weight="600" text-anchor="middle" fill="#111111">Cookie banner</text>
+                <text x="354" y="87" font-size="11.5" text-anchor="middle" fill="#6B7280">blocks page scripts</text>
+                <line x1="204" y1="73" x2="280" y2="73" stroke="#111111" stroke-width="1.5" marker-end="url(#bop-a)"/>
+                <line x1="424" y1="73" x2="470" y2="73" stroke="#6B7280" stroke-width="1.5" stroke-dasharray="3 3"/>
+                <line x1="474" y1="66" x2="488" y2="80" stroke="#6B7280" stroke-width="2"/>
+                <line x1="488" y1="66" x2="474" y2="80" stroke="#6B7280" stroke-width="2"/>
+                <text x="498" y="77" font-size="11.5" fill="#6B7280">stopped</text>
+
+                <!-- the pixel, which the banner cannot see -->
+                <line x1="194" y1="175" x2="516" y2="175" stroke="#B42318" stroke-width="2" marker-end="url(#bop-r)"/>
+                <text x="354" y="164" font-size="11.5" text-anchor="middle" fill="#6B7280">the banner can't see in</text>
+                <text x="354" y="194" font-size="11.5" font-weight="600" text-anchor="middle" fill="#B42318">data sent anyway</text>
+                <line x1="354" y1="104" x2="354" y2="150" stroke="#9CA3AF" stroke-width="1.2" stroke-dasharray="2 3"/>
+
+                <rect x="520" y="146" width="136" height="58" rx="6" fill="#fff" stroke="#111111"/>
+                <text x="588" y="180" font-size="13" font-weight="600" text-anchor="middle" fill="#111111">Ad companies</text>
+              </svg>
+            </div>
+            <figcaption>The gap this study measures, simplified. A cookie banner can block scripts on the page, but not the advertising pixels Shopify runs inside its sandbox.</figcaption>
+          </figure>
+          <p class="desc">When you click Decline on a cookie banner, or turn on your browser's Global Privacy Control signal, does the advertising code on the page actually stop? I measured that across 1,362 popular Shopify stores drawn from the Tranco ranking of top websites, loading each store's product page in a fresh automated browser three ways: doing nothing, clicking only Decline, and with the privacy signal switched on. Cookie banners usually work by blocking tracking scripts on the page, but Shopify now runs many advertising pixels inside a sandbox, an isolated web worker the banner cannot see into. Using the Chrome DevTools Protocol, the crawler traced every request to an ad company back to where its code ran and when it was sent. Shopify's own consent gate mostly works as designed. Consent gets lost at the connections around it: defaults that let pixels run before anyone has chosen, pixels that under-declare what they do, a race in which the sandbox starts before the banner reports the visitor's refusal, and no way to stop a pixel that is already running. The result is ad companies listed as blocked on paper while their code sends data anyway. The crawler only ever clicks Decline, never logs in or buys anything, and identifies itself as automated, and every number in the manuscript is checked automatically against the analysis outputs. Results will be published after the companies involved have had 45 days to respond. I also turned the crawler into ConsentCheck, a free open source tool that lets a store owner test their own store, to be released with the paper.</p>
+          <p class="stack">Node.js, Playwright, Chrome DevTools Protocol, Python, pandas, SciPy, statsmodels, LaTeX, TikZ</p>
+        </article>
+
+        <!-- Project 6: Paper Lantern internship -->
         <article class="project">
           <h2>Research Intern, Paper Lantern</h2>
           <p class="project-byline">Working with a team led by current Google DeepMind executives. Aug 2026, ongoing.</p>
@@ -695,7 +761,7 @@
           <p class="stack">Benchmarks, arenas, RL environments, evaluation design, literature review</p>
         </article>
 
-        <!-- Project 6: STEM Research Club -->
+        <!-- Project 7: STEM Research Club -->
         <article class="project">
           <h2>STEM Research Club</h2>
           <p class="project-byline">Founded and run at LAHS. Since 10th grade, ongoing.</p>
@@ -706,7 +772,7 @@
           <p class="stack">Workshops, guest lectures, paper reading, cold outreach, literature review, resume preparation</p>
         </article>
 
-        <!-- Project 7: Kangaroo Atlas -->
+        <!-- Project 8: Kangaroo Atlas -->
         <article class="project">
           <h2><a href="https://kangarooatlas.com/" target="_blank" rel="noopener">Kangaroo Atlas</a></h2>
           <p class="project-byline">Live and open source.</p>
@@ -728,7 +794,7 @@
           <p class="stack">Next.js, TypeScript, Tailwind CSS, Zod, ts-fsrs, Vitest, axe-core, GitHub Actions</p>
         </article>
 
-        <!-- Project 8: Voltage Drop -->
+        <!-- Project 9: Voltage Drop -->
         <article class="project">
           <h2>Voltage Drop</h2>
           <p class="project-byline">Weekly solo explainer podcast.</p>
@@ -773,6 +839,7 @@
             <div class="hl-label">Research</div>
             <p>Research intern at Paper Lantern, working with a team led by current Google DeepMind executives on how frontier AI models are evaluated.</p>
             <p>The work is a survey of that landscape, cataloguing what each benchmark, arena, and RL environment actually measures, how it collects human or verifiable judgement, and why a handful became standards while most were built and then forgotten.</p>
+            <p>Independent research on how online consent gets lost, measuring cookie banners against sandboxed advertising code across 1,362 stores. Paper in preparation for peer review.</p>
             <p>Co-authoring a multi-output Gaussian process surrogate model for neglected tropical disease drug discovery, meant to let an underfunded lab skip a round of wet lab screening.</p>
           </div>
 
@@ -865,6 +932,8 @@
             <div class="hl-label">Research and measurement</div>
             <p>AI evaluation research across benchmarks, arenas, and RL environments (Paper Lantern)</p>
             <p>Evaluation corpus design with real-world inputs and held-out sets (<a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>)</p>
+            <p>Large-scale web measurement, tracing each network request back to the code that sent it (Blocked on Paper)</p>
+            <p>Survey statistics: cluster-bootstrap confidence intervals, paired tests, and inter-rater agreement (Blocked on Paper)</p>
             <p>Precision and recall reporting with minimum sample thresholds (<a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>)</p>
             <p>Multi-seed experiments with confidence intervals (<a href="https://docs.google.com/document/d/1pFS1FnaJ6Jw0lTz1hSyls6TYdCh59QV1VHt6lvtOqkU/edit?tab=t.bp6v8s45i9jr#heading=h.aoea57n9ms0d" target="_blank" rel="noopener">MOGP</a>, <a href="https://github.com/devanshsanghavi-droid/ConradChallenge" target="_blank" rel="noopener">ResidualMap</a>)</p>
           </div>
@@ -889,6 +958,7 @@
             <div class="hl-label">Security and privacy</div>
             <p>Field-level AES-256-GCM encryption with hardware-backed keys (<a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>)</p>
             <p>PII redaction before persistence (<a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>)</p>
+            <p>Research ethics and responsible disclosure, including an IRB determination and a 45-day notice to affected companies (Blocked on Paper)</p>
             <p>Privacy-by-design for minors and vulnerable users, no trackers or accounts (<a href="https://kangarooatlas.com/" target="_blank" rel="noopener">Kangaroo Atlas</a>, <a href="https://github.com/devanshsanghavi-droid/Congressional_App_Challenge" target="_blank" rel="noopener">Carta</a>)</p>
             <p>Postgres row-level security with pgTAP tests (<a href="https://kangarooatlas.com/" target="_blank" rel="noopener">Kangaroo Atlas</a>)</p>
           </div>
@@ -903,7 +973,7 @@
 
           <div class="hl-group wide">
             <div class="hl-label">Languages and tools</div>
-            <p>TypeScript, Python, Java, SQL. React, React Native, Expo, Next.js. PyTorch, GPyTorch, BoTorch, RDKit, scikit-learn, pandas. Firebase, Supabase, Postgres, Cloudflare. Jest, Vitest, pytest, GitHub Actions, Claude Code.</p>
+            <p>TypeScript, Python, Java, SQL. React, React Native, Expo, Next.js, Node.js, Playwright. PyTorch, GPyTorch, BoTorch, RDKit, scikit-learn, pandas, statsmodels. Firebase, Supabase, Postgres, Cloudflare. Jest, Vitest, pytest, GitHub Actions, LaTeX, Claude Code.</p>
           </div>
 
         </div>
