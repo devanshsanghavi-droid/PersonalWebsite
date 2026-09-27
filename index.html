@@ -703,7 +703,48 @@
           <p class="stack">Python, WNTR, EPANET 2.2, scikit-learn Gaussian processes, NumPy, SciPy, Streamlit, Matplotlib</p>
         </article>
 
-        <!-- Project 5: Blocked on Paper -->
+        <!-- Project 5: Paper Lantern internship -->
+        <article class="project">
+          <h2>Research Intern, Paper Lantern</h2>
+          <p class="project-byline">Working with a team led by current Google DeepMind executives. Aug 2026, ongoing.</p>
+          <p class="desc">Frontier models have effectively consumed the open internet as training data, and yet they still fall short on the tasks worth the most in our economy, the ones that need deep expertise, long term thinking, or taste. Closing that gap takes human judgement and verifiable outcomes, which is why benchmarks, arenas, and RL environments have grown into a multi billion dollar industry of their own. My work is a survey of that landscape. I am cataloguing which evaluation efforts exist, what model capability each one actually tests, how it collects human or verifiable judgements, and how it found an audience, including the ten or so that were built and never caught on. I map them along dimensions like domain, task complexity, and accessibility, meaning whether only a well funded lab can evaluate on it or whether an ordinary person can contribute. The point of the survey is to find a capability that is measurably weak, prove it with data rather than assert it, and then build the evaluation and training data that would improve it.</p>
+          <p class="stack">Benchmarks, arenas, RL environments, evaluation design, literature review</p>
+        </article>
+
+        <!-- Project 6: STEM Research Club -->
+        <article class="project">
+          <h2>STEM Research Club</h2>
+          <p class="project-byline">Founded and run at LAHS. Since 10th grade, ongoing.</p>
+          <p class="project-meta">
+            <a href="https://www.instagram.com/stemresearchclub_lahs/" target="_blank" rel="noopener">Instagram &#8599;</a>
+          </p>
+          <p class="desc">I run workshops at LAHS for students who want to do research and have no idea what the first step is. The barrier is not interest, it is that nobody teaches you how to identify what you want to study, how to read an academic paper, or what a cold email to a professor should say. The workshops cover exactly that, plus literature review and resume preparation, and more than 100 people have come through them. We also bring in guest speakers, so far all of them working in AI, including venture capital partners and people at large tech companies, each walking through the path they took. The eventual goal is to connect members with professors and research programs at nearby community colleges and state universities.</p>
+          <p class="stack">Workshops, guest lectures, paper reading, cold outreach, literature review, resume preparation</p>
+        </article>
+
+        <!-- Project 7: Kangaroo Atlas -->
+        <article class="project">
+          <h2><a href="https://kangarooatlas.com/" target="_blank" rel="noopener">Kangaroo Atlas</a></h2>
+          <p class="project-byline">Live and open source.</p>
+          <p class="project-meta">
+            <a href="https://kangarooatlas.com/" target="_blank" rel="noopener">kangarooatlas.com &#8599;</a>
+            <span class="sep">&middot;</span>
+            <a href="https://github.com/devanshsanghavi-droid/MathKangarooWebsite" target="_blank" rel="noopener">GitHub repository &#8599;</a>
+          </p>
+          <figure class="project-image">
+            <picture>
+              <source type="image/webp" srcset="images/opt/math-kangaroo-mentoring-400.webp 400w, images/opt/math-kangaroo-mentoring-672.webp 672w, images/opt/math-kangaroo-mentoring-1344.webp 1344w" sizes="(max-width: 768px) calc(100vw - 48px), 672px" />
+              <img src="images/opt/math-kangaroo-mentoring-1344.jpg" srcset="images/opt/math-kangaroo-mentoring-400.jpg 400w, images/opt/math-kangaroo-mentoring-672.jpg 672w, images/opt/math-kangaroo-mentoring-1344.jpg 1344w" sizes="(max-width: 768px) calc(100vw - 48px), 672px"
+                   width="1600" height="1200" loading="lazy" decoding="async"
+                   alt="Devansh leaning over a table of younger students working through Math Kangaroo practice problems, with worksheets and pencils spread across the desks." />
+            </picture>
+            <figcaption>Working through practice problems with students, the in-person program Kangaroo Atlas is built to serve.</figcaption>
+          </figure>
+          <p class="desc">Past papers tell a student the score, not which skill failed. I run a Math Kangaroo prep program for about 60 students a year. Most of that work is in person at the schools, sitting at a table with a group of kids and working a problem through out loud, and that room is where the program actually lives. We fix the problem a student missed, and the misconception underneath it survives to the next paper. Kangaroo Atlas is what I built instead. Every one of the 600 wrong answer choices stores the specific misconception that produces it, a rule the build enforces, so a score becomes a diagnosis rather than a number. Behind it sits a prerequisite graph over 91 named skills in 7 strands joined by 106 edges, so a miss on the adaptive diagnostic walks down to the skill underneath. I wrote all 150 problems myself, so no official Math Kangaroo question is ever reproduced, and each one carries a three step hint ladder and, where it needs one, a hand-drawn figure from a set of 25. Every one is hand written rather than generated or adapted, and each took a long sitting to analyze, because a problem is only worth including once it tests the skill it claims to test instead of rewarding a trick the student happens to have seen. Timed 75 minute mocks, per skill ladders, and printable worksheets whose answer key carries those explanations all run signed out, with no ads or trackers. It builds to 869 static pages behind 2,138 tests and 102 accessibility assertions, every one of them build-blocking. The goal is a free version of my program that another tutor can self host.</p>
+          <p class="stack">Next.js, TypeScript, Tailwind CSS, Zod, ts-fsrs, Vitest, axe-core, GitHub Actions</p>
+        </article>
+
+        <!-- Project 8: Blocked on Paper -->
         <article class="project">
           <h2>Blocked on Paper: measuring how online consent gets lost</h2>
           <p class="project-byline">Independent research with an adult mentor, 2026, ongoing. Main measurement complete, paper in preparation for peer review. The paper, code, and tool will be linked here after the companies involved have been notified.</p>
@@ -751,47 +792,6 @@
           </figure>
           <p class="desc">When you click Decline on a cookie banner, or turn on your browser's Global Privacy Control signal, does the advertising code on the page actually stop? I measured that across 1,362 popular Shopify stores drawn from the Tranco ranking of top websites, loading each store's product page in a fresh automated browser three ways: doing nothing, clicking only Decline, and with the privacy signal switched on. Cookie banners usually work by blocking tracking scripts on the page, but Shopify now runs many advertising pixels inside a sandbox, an isolated web worker the banner cannot see into. Using the Chrome DevTools Protocol, the crawler traced every request to an ad company back to where its code ran and when it was sent. Shopify's own consent gate mostly works as designed. Consent gets lost at the connections around it: defaults that let pixels run before anyone has chosen, pixels that under-declare what they do, a race in which the sandbox starts before the banner reports the visitor's refusal, and no way to stop a pixel that is already running. The result is ad companies listed as blocked on paper while their code sends data anyway. The crawler only ever clicks Decline, never logs in or buys anything, and identifies itself as automated, and every number in the manuscript is checked automatically against the analysis outputs. Results will be published after the companies involved have had 45 days to respond. I also turned the crawler into ConsentCheck, a free open source tool that lets a store owner test their own store, to be released with the paper.</p>
           <p class="stack">Node.js, Playwright, Chrome DevTools Protocol, Python, pandas, SciPy, statsmodels, LaTeX, TikZ</p>
-        </article>
-
-        <!-- Project 6: Paper Lantern internship -->
-        <article class="project">
-          <h2>Research Intern, Paper Lantern</h2>
-          <p class="project-byline">Working with a team led by current Google DeepMind executives. Aug 2026, ongoing.</p>
-          <p class="desc">Frontier models have effectively consumed the open internet as training data, and yet they still fall short on the tasks worth the most in our economy, the ones that need deep expertise, long term thinking, or taste. Closing that gap takes human judgement and verifiable outcomes, which is why benchmarks, arenas, and RL environments have grown into a multi billion dollar industry of their own. My work is a survey of that landscape. I am cataloguing which evaluation efforts exist, what model capability each one actually tests, how it collects human or verifiable judgements, and how it found an audience, including the ten or so that were built and never caught on. I map them along dimensions like domain, task complexity, and accessibility, meaning whether only a well funded lab can evaluate on it or whether an ordinary person can contribute. The point of the survey is to find a capability that is measurably weak, prove it with data rather than assert it, and then build the evaluation and training data that would improve it.</p>
-          <p class="stack">Benchmarks, arenas, RL environments, evaluation design, literature review</p>
-        </article>
-
-        <!-- Project 7: STEM Research Club -->
-        <article class="project">
-          <h2>STEM Research Club</h2>
-          <p class="project-byline">Founded and run at LAHS. Since 10th grade, ongoing.</p>
-          <p class="project-meta">
-            <a href="https://www.instagram.com/stemresearchclub_lahs/" target="_blank" rel="noopener">Instagram &#8599;</a>
-          </p>
-          <p class="desc">I run workshops at LAHS for students who want to do research and have no idea what the first step is. The barrier is not interest, it is that nobody teaches you how to identify what you want to study, how to read an academic paper, or what a cold email to a professor should say. The workshops cover exactly that, plus literature review and resume preparation, and more than 100 people have come through them. We also bring in guest speakers, so far all of them working in AI, including venture capital partners and people at large tech companies, each walking through the path they took. The eventual goal is to connect members with professors and research programs at nearby community colleges and state universities.</p>
-          <p class="stack">Workshops, guest lectures, paper reading, cold outreach, literature review, resume preparation</p>
-        </article>
-
-        <!-- Project 8: Kangaroo Atlas -->
-        <article class="project">
-          <h2><a href="https://kangarooatlas.com/" target="_blank" rel="noopener">Kangaroo Atlas</a></h2>
-          <p class="project-byline">Live and open source.</p>
-          <p class="project-meta">
-            <a href="https://kangarooatlas.com/" target="_blank" rel="noopener">kangarooatlas.com &#8599;</a>
-            <span class="sep">&middot;</span>
-            <a href="https://github.com/devanshsanghavi-droid/MathKangarooWebsite" target="_blank" rel="noopener">GitHub repository &#8599;</a>
-          </p>
-          <figure class="project-image">
-            <picture>
-              <source type="image/webp" srcset="images/opt/math-kangaroo-mentoring-400.webp 400w, images/opt/math-kangaroo-mentoring-672.webp 672w, images/opt/math-kangaroo-mentoring-1344.webp 1344w" sizes="(max-width: 768px) calc(100vw - 48px), 672px" />
-              <img src="images/opt/math-kangaroo-mentoring-1344.jpg" srcset="images/opt/math-kangaroo-mentoring-400.jpg 400w, images/opt/math-kangaroo-mentoring-672.jpg 672w, images/opt/math-kangaroo-mentoring-1344.jpg 1344w" sizes="(max-width: 768px) calc(100vw - 48px), 672px"
-                   width="1600" height="1200" loading="lazy" decoding="async"
-                   alt="Devansh leaning over a table of younger students working through Math Kangaroo practice problems, with worksheets and pencils spread across the desks." />
-            </picture>
-            <figcaption>Working through practice problems with students, the in-person program Kangaroo Atlas is built to serve.</figcaption>
-          </figure>
-          <p class="desc">Past papers tell a student the score, not which skill failed. I run a Math Kangaroo prep program for about 60 students a year. Most of that work is in person at the schools, sitting at a table with a group of kids and working a problem through out loud, and that room is where the program actually lives. We fix the problem a student missed, and the misconception underneath it survives to the next paper. Kangaroo Atlas is what I built instead. Every one of the 600 wrong answer choices stores the specific misconception that produces it, a rule the build enforces, so a score becomes a diagnosis rather than a number. Behind it sits a prerequisite graph over 91 named skills in 7 strands joined by 106 edges, so a miss on the adaptive diagnostic walks down to the skill underneath. I wrote all 150 problems myself, so no official Math Kangaroo question is ever reproduced, and each one carries a three step hint ladder and, where it needs one, a hand-drawn figure from a set of 25. Every one is hand written rather than generated or adapted, and each took a long sitting to analyze, because a problem is only worth including once it tests the skill it claims to test instead of rewarding a trick the student happens to have seen. Timed 75 minute mocks, per skill ladders, and printable worksheets whose answer key carries those explanations all run signed out, with no ads or trackers. It builds to 869 static pages behind 2,138 tests and 102 accessibility assertions, every one of them build-blocking. The goal is a free version of my program that another tutor can self host.</p>
-          <p class="stack">Next.js, TypeScript, Tailwind CSS, Zod, ts-fsrs, Vitest, axe-core, GitHub Actions</p>
         </article>
 
         <!-- Project 9: Voltage Drop -->
